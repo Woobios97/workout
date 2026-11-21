@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="운동">
+<meta name="theme-color" content="#f4f4f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>운동</title>
+<style>
+:root{--bg:#f4f4f6;--card:#fff;--tx:#111;--sub:#6b6b75;--line:#e3e3e8;--ac:#2f6bff;--ok:#16a34a;--warn:#d97706;--bad:#dc2626;--chip:#ececf1}
+@media (prefers-color-scheme:dark){:root{--bg:#111113;--card:#1c1c20;--tx:#f2f2f4;--sub:#9a9aa5;--line:#2c2c33;--chip:#2a2a31}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(env(safe-area-inset-top) + 10px) 16px 8px}
+h1{margin:0;font-size:26px}
+main{padding:0 12px calc(env(safe-area-inset-bottom) + 150px)}
+.card{background:var(--card);border-radius:14px;padding:14px;margin:10px 0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sub{color:var(--sub);font-size:14px}
+.tag{font-size:13px;padding:2px 8px;border-radius:99px;background:var(--chip);color:var(--sub);white-space:nowrap}
+.seg{display:flex;background:var(--chip);border-radius:10px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:transparent;color:var(--tx);padding:8px;border-radius:8px;font-size:15px}
+.seg button.on{background:var(--card);font-weight:600;box-shadow:0 1px 3px #0002}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chips button{border:1px solid var(--line);background:var(--card);color:var(--tx);border-radius:99px;padding:7px 12px;font-size:15px}
+.chips button.next{border-color:var(--ac);color:var(--ac);font-weight:600}
+.btn{display:block;width:100%;border:0;border-radius:12px;padding:14px;font-size:17px;font-weight:600;background:var(--ac);color:#fff;margin-top:10px}
+.btn.gray{background:var(--chip);color:var(--tx)}
+.btn.small{display:inline-block;width:auto;padding:8px 12px;font-size:15px;margin:0}
+.set{display:grid;grid-template-columns:28px 1fr 1fr 48px;gap:8px;align-items:center;margin-top:8px}
+.set input{width:100%;font-size:17px;padding:9px 8px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--tx);text-align:center}
+.set .n{color:var(--sub);text-align:center;font-size:14px}
+.ck{height:42px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--sub);font-size:20px}
+.set.done .ck{background:var(--ok);border-color:var(--ok);color:#fff}
+.set.done input{opacity:.6}
+.set.opt .n{font-size:11px}
+.lbl{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px;color:var(--sub)}
+.lbl input{width:20px;height:20px}
+.chk{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.chk:first-of-type{border-top:0}
+.chk input{width:22px;height:22px}
+.hint{border-left:4px solid var(--warn);padding:10px 12px;background:var(--card);border-radius:10px;margin:10px 0;font-size:15px}
+.hint.ok{border-color:var(--ok)}.hint.bad{border-color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+td,th{padding:7px 4px;border-bottom:1px solid var(--line);text-align:left}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:9}
+nav button{flex:1;border:0;background:none;color:var(--sub);padding:10px 0 8px;font-size:13px}
+nav button b{display:block;font-size:20px;line-height:1.2}
+nav button.on{color:var(--ac)}
+#timer{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 66px);background:var(--tx);color:var(--bg);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;z-index:8}
+#timer[hidden]{display:none}
+#timer .t{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;flex:1}
+#timer button{border:0;border-radius:9px;padding:8px 10px;background:#fff3;color:inherit;font-size:15px}
+#timer.end{background:var(--ok);color:#fff}
+.guide h3{margin:16px 0 6px;font-size:17px}
+.guide p,.guide li{font-size:15px}
+.guide ul{padding-left:20px;margin:4px 0}
+input[type=date],input[type=number].wide{font-size:17px;padding:9px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--tx)}
+</style>
+</head>
+<body>
+<header><h1 id="ttl">오늘</h1></header>
+<main id="view"></main>
+<div id="timer" hidden><span class="t" id="tt">0:00</span><button id="tplus">+30초</button><button id="tclose">닫기</button></div>
+<nav id="nav">
+<button data-tab="today"><b>💪</b>오늘</button>
+<button data-tab="weight"><b>⚖️</b>체중</button>
+<button data-tab="log"><b>📋</b>기록</button>
+<button data-tab="guide"><b>📖</b>가이드</button>
+</nav>
+<script>
+"use strict";
+// ---------- 루틴 정의 ----------
+// t: bb 바벨, db 덤벨, mc 머신, bw 맨몸(추가 무게), sec 초
+const E=(n,s,lo,hi,t,note)=>({n,s,lo,hi,t,note:note||''});
+const DAYS={
+'하체A':[E('스쿼트',3,6,8,'bb'),E('루마니안 데드',3,8,10,'bb'),E('불가리안 스플릿 스쿼트',3,8,10,'db','좌우 각각'),E('레그컬',3,10,12,'mc'),E('카프레이즈',3,12,15,'mc'),E('플랭크',3,40,40,'sec')],
+'상체A':[E('벤치프레스',3,6,8,'bb'),E('시티드 로우',3,8,10,'mc'),E('덤벨 숄더프레스',3,8,10,'db'),E('랫풀다운',3,8,12,'mc'),E('사이드 레터럴',3,12,20,'db'),E('페이스풀',3,15,15,'mc'),E('바벨컬',2,10,12,'bb'),E('푸시다운',2,10,12,'mc')],
+'하체B':[E('데드리프트',3,5,5,'bb','원판 작으면 받침 위'),E('레그프레스',3,10,12,'mc'),E('힙쓰러스트',3,8,12,'bb'),E('레그익스텐션',3,12,15,'mc'),E('워킹 런지',2,10,10,'db','좌우 각각'),E('카프레이즈',3,12,15,'mc'),E('케이블 크런치',3,12,12,'mc')],
+'상체B':[E('풀업',3,6,10,'bw','안되면 어시스트나 랫풀다운'),E('인클라인 덤벨프레스',3,8,10,'db'),E('원암 덤벨로우',3,10,10,'db','좌우 각각'),E('딥스',3,8,12,'bw','안되면 체스트프레스 머신'),E('사이드 레터럴',3,12,20,'db'),E('리어델트 플라이',3,15,15,'mc'),E('해머컬',2,10,12,'db'),E('오버헤드 익스텐션',2,10,12,'db')],
+'전신A':[E('스쿼트',3,6,8,'bb'),E('벤치프레스',3,6,8,'bb'),E('랫풀다운',3,8,12,'mc'),E('루마니안 데드',3,8,10,'bb'),E('사이드 레터럴',3,12,20,'db'),E('바벨컬',2,10,12,'bb'),E('플랭크',3,40,40,'sec')],
+'전신B':[E('데드리프트',3,5,5,'bb','원판 작으면 받침 위'),E('덤벨 숄더프레스',3,8,10,'db'),E('시티드 로우',3,8,10,'mc'),E('불가리안 스플릿 스쿼트',3,8,10,'db','좌우 각각'),E('페이스풀',3,15,15,'mc'),E('푸시다운',2,10,12,'mc'),E('카프레이즈',3,12,15,'mc')],
+'전신C':[E('레그프레스',3,10,12,'mc'),E('인클라인 덤벨프레스',3,8,10,'db'),E('풀업',3,6,10,'bw','안되면 랫풀다운'),E('레그컬',3,10,12,'mc'),E('딥스',3,8,12,'bw'),E('해머컬',2,10,12,'db'),E('힙쓰러스트',3,8,12,'bb')]
+};
+const PLANS={4:['하체A','상체A','하체B','상체B'],3:['전신A','전신B','전신C']};
+const START_W={'벤치프레스':40,'스쿼트':20,'루마니안 데드':25,'데드리프트':30};
+const INC={bb:'+2.5kg',db:'한 손 +1~2kg',mc:'한 칸'};
+const REST={bb:150,db:75,mc:75,bw:90,sec:60};
+const FOOD=['기본 : 3끼 + 프로틴 2스쿱(물)','1단계 : 프로틴 1번을 우유 400ml에','2단계 : 1단계 + 저녁 밥 2/3공기'];
+
+// ---------- 저장 ----------
+const KEY='workout_v1';
+const DEF={plan:4,start:'2026-11-23',short:false,light:false,logs:[],wt:{},waist:{},chk:{},food:0,draft:null,tab:'today'};
+let D;
+function clean(x){
+ const o=Object.assign({},DEF,{logs:[],wt:{},waist:{},chk:{},draft:null});if(!x||typeof x!=='object')return o;
+ const isD=k=>/^\d{4}-\d{2}-\d{2}$/.test(k),num=v=>typeof v==='number'&&isFinite(v);
+ if(x.plan===3||x.plan===4)o.plan=x.plan;
+ if(typeof x.start==='string'&&isD(x.start))o.start=x.start;
+ o.short=!!x.short;o.light=!!x.light;o.food=[0,1,2].includes(x.food)?x.food:0;
+ if(typeof x.foodAt==='string'&&isD(x.foodAt))o.foodAt=x.foodAt;
+ if(Number.isInteger(x.lastLight))o.lastLight=x.lastLight;
+ for(const k of ['wt','waist'])if(x[k]&&typeof x[k]==='object')for(const [d,v] of Object.entries(x[k]))if((isD(d)||/^\d{4}-\d{2}$/.test(d))&&num(v))o[k][d]=v;
+ if(x.chk&&typeof x.chk==='object')for(const [d,v] of Object.entries(x.chk))if(isD(d)&&v&&typeof v==='object'){o.chk[d]={};for(const [k,b] of Object.entries(v))if(/^[a-z0-9]+$/.test(k))o.chk[d][k]=!!b}
+ const names=new Set(Object.values(DAYS).flat().map(e=>e.n));
+ const okSets=a=>Array.isArray(a)?a.filter(t=>t&&typeof t==='object').map(t=>({w:num(t.w)?t.w:'',r:num(t.r)?t.r:0})):[];
+ if(Array.isArray(x.logs))o.logs=x.logs.filter(l=>l&&DAYS[l.day]&&isD(l.date)&&Array.isArray(l.ex)).map(l=>({ts:num(l.ts)?l.ts:Date.parse(l.date),date:l.date,day:l.day,short:!!l.short,light:!!l.light,week:Number.isInteger(l.week)?l.week:0,ex:l.ex.filter(e=>e&&names.has(e.n)).map(e=>({n:e.n,planned:Number.isInteger(e.planned)?e.planned:0,hard:!!e.hard,sets:okSets(e.sets)}))}));
+ if(x.draft&&DAYS[x.draft.day]&&isD(x.draft.date)&&Array.isArray(x.draft.ex)&&x.draft.ex.every(e=>e&&names.has(e.n)&&Array.isArray(e.sets)))o.draft={day:x.draft.day,date:x.draft.date,short:!!x.draft.short,light:!!x.draft.light,week:Number.isInteger(x.draft.week)?x.draft.week:0,ex:x.draft.ex.map(e=>({n:e.n,hard:!!e.hard,sets:e.sets.map(t=>({w:String(t.w??'').replace(/[^0-9.]/g,''),r:String(t.r??'').replace(/[^0-9]/g,''),done:!!t.done,opt:!!t.opt}))}))};
+ if(['today','weight','log','guide'].includes(x.tab))o.tab=x.tab;
+ return o;
+}
+{const raw=localStorage.getItem(KEY);
+ try{D=clean(JSON.parse(raw||'{}'))}catch(e){if(raw)localStorage.setItem(KEY+'_broken_'+Date.now(),raw);D=clean({});alert('저장된 기록을 읽지 못해 따로 보관했습니다. 기록 탭에서 백업을 불러와 주세요.')}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(D));return true}catch(e){alert('저장 실패 : 저장 공간을 확인해 주세요');return false}};
+if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();
+
+// ---------- 날짜 ----------
+const pad=n=>String(n).padStart(2,'0');
+const ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const today=()=>ymd(new Date());
+const dayDiff=(a,b)=>Math.round((new Date(a+'T00:00')-new Date(b+'T00:00'))/864e5);
+const addDays=(a,n)=>{const d=new Date(a+'T00:00');d.setDate(d.getDate()+n);return ymd(d)};
+const wkOf=(d)=>{const x=dayDiff(d,D.start);return x<0?0:Math.floor(x/7)+1};
+const md=s=>{const [y,m,d]=s.split('-');return +m+'/'+(+d)};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function rule(w){w=Math.max(w,1);
+ if(w===1)return{sets:2,left:4,t:'복귀 1주차 : 2세트만, 4개 남기고 끝'};
+ if(w===2)return{sets:3,opt:true,left:3,t:'복귀 2주차 : 2~3세트, 3개 남기고 끝 (3세트째는 선택)'};
+ if(w<=4)return{sets:3,left:2,t:w+'주차 : 3세트, 2개 남기고 끝'};
+ return{sets:3,left:'1~2',t:w+'주차 : 3세트, 1~2개 남기고 끝'};}
+function setCount(ex,light,w){let n=Math.min(ex.s,rule(w).sets);if(light)n=Math.max(1,Math.ceil(n/2));return n}
+
+// ---------- 다음 운동 ----------
+function lastOfPlan(){return D.logs.filter(l=>PLANS[D.plan].includes(l.day)).sort((a,b)=>b.ts-a.ts)[0]}
+function nextDay(){const l=lastOfPlan();const p=PLANS[D.plan];if(!l)return p[0];return p[(p.indexOf(l.day)+1)%p.length]}
+
+// ---------- 무게 제안 ----------
+function history(name,all){const out=[];for(const l of [...D.logs].sort((a,b)=>b.ts-a.ts)){if(l.light&&!all)continue;const e=l.ex.find(x=>x.n===name);if(e&&e.sets.length)out.push({date:l.date,...e})}return out}
+function suggest(ex){
+ const h=history(ex.n);
+ if(!h.length){if(START_W[ex.n]!=null)return{w:START_W[ex.n],msg:'첫 세트 무게 (봉 20kg 포함). 해 보고 바로 조정'};
+  if(ex.t==='sec')return{w:'',msg:'버틸 수 있는 만큼, 목표 '+ex.hi+'초'};
+  if(ex.t==='bw')return{w:'',msg:'맨몸이면 무게 칸 비우기'};
+  return{w:'',msg:'12~13회 할 수 있는 무게로 시작'};}
+ const last=h[0],ws=last.sets.map(s=>+s.w||0),lw=Math.max(...ws);
+ const prevTxt=md(last.date)+' '+(lw?lw+'kg ':'')+last.sets.map(s=>s.r).join(',');
+ if(ex.t==='sec')return{w:'',msg:'지난번 '+prevTxt+'초'};
+ const allTop=last.sets.length>=last.planned&&last.sets.every(s=>+s.r>=ex.hi&&(+s.w||0)===lw);
+ const below=last.sets.some(s=>+s.r<ex.lo);
+ if(below&&h[1]){const pw=Math.max(...h[1].sets.map(s=>+s.w||0));if(pw<lw)return{w:pw,msg:'지난번 '+prevTxt+' 범위 첫 숫자 못 채움 → 원래 '+pw+'kg로'}}
+ if(last.hard)return{w:lw||'',msg:'지난번 '+prevTxt+' (버거웠음) → 같은 무게'};
+ if(allTop){
+  if(ex.t==='bb')return{w:lw+2.5,msg:'지난번 '+prevTxt+' 다 채움 → +2.5kg',up:true};
+  if(ex.t==='db')return{w:lw+1,msg:'지난번 '+prevTxt+' 다 채움 → 한 손 +1~2kg',up:true};
+  if(ex.t==='bw')return{w:lw||'',msg:'지난번 '+prevTxt+' 다 채움 → 추가 무게 또는 보조 줄이기',up:true};
+  return{w:lw,msg:'지난번 '+prevTxt+' 다 채움 → 한 칸 올리기',up:true};}
+ let stall='';
+ if(h[1]&&JSON.stringify(h[0].sets.map(s=>[+s.w,+s.r]))===JSON.stringify(h[1].sets.map(s=>[+s.w,+s.r])))stall=' (2번 연속 그대로 → 가벼운 주 고려)';
+ return{w:lw||'',msg:'지난번 '+prevTxt+' → 같은 무게로 한 번 더'+stall};
+}
+
+// ---------- 운동 진행 ----------
+function startDraft(day){
+ const w=wkOf(today());
+ const list=DAYS[day].filter((_,i)=>!D.short||i<4);
+ D.draft={day,date:today(),short:D.short,light:D.light,week:w,ex:list.map(ex=>{const s=suggest(ex);const n=setCount(ex,D.light,w);
+  const sets=[];for(let i=0;i<n;i++)sets.push({w:s.w,r:'',done:false,opt:rule(w).opt&&!D.light&&i===2&&ex.s>=3});
+  return{n:ex.n,sets,hard:false}})};
+ save();render();window.scrollTo(0,0);
+}
+function finish(){
+ const d=D.draft;const ex=d.ex.map(e=>{const def=findEx(d.day,e.n);return{n:e.n,planned:e.sets.filter(s=>!s.opt).length,hard:e.hard,sets:e.sets.filter(s=>s.done).map(s=>({w:s.w===''||isNaN(+s.w)?'':+s.w,r:s.r===''||isNaN(+s.r)?def.hi:+s.r}))}}).filter(e=>e.sets.length);
+ if(!ex.length){if(!confirm('체크한 세트가 없습니다. 기록 없이 끝낼까요?'))return;D.draft=null;save();render();return}
+ D.logs.push({ts:Date.now(),date:d.date,day:d.day,short:d.short,light:d.light,week:d.week,ex});
+ const keepLight=D.lastLight;if(d.light)D.lastLight=d.week;
+ const keepDraft=D.draft;D.draft=null;
+ if(!save()){D.logs.pop();D.draft=keepDraft;D.lastLight=keepLight;return}
+ stopTimer();render();window.scrollTo(0,0);
+}
+function findEx(day,n){return DAYS[day].find(x=>x.n===n)}
+
+// ---------- 휴식 타이머 ----------
+let tEnd=0,tInt=null;
+function startTimer(sec){tEnd=Date.now()+sec*1000;$('#timer').hidden=false;$('#timer').classList.remove('end');if(!tInt)tInt=setInterval(tick,300);tick()}
+function stopTimer(){clearInterval(tInt);tInt=null;$('#timer').hidden=true}
+function tick(){const r=Math.round((tEnd-Date.now())/1000);const el=$('#tt');
+ if(r<=0){el.textContent='다음 세트!';if(!$('#timer').classList.contains('end')){$('#timer').classList.add('end');navigator.vibrate&&navigator.vibrate(300)}return}
+ el.textContent='휴식 '+Math.floor(r/60)+':'+pad(r%60)}
+function $(s){return document.querySelector(s)}
+
+// ---------- 화면 ----------
+const V=$('#view');
+function render(){
+ document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===D.tab));
+ $('#ttl').textContent={today:'오늘',weight:'체중',log:'기록',guide:'가이드'}[D.tab];
+ V.innerHTML=({today:vToday,weight:vWeight,log:vLog,guide:vGuide}[D.tab])();
+}
+function vToday(){
+ const t=today(),w=wkOf(t),r=rule(w);let h='';
+ if(!navigator.standalone&&!matchMedia('(display-mode: standalone)').matches)h+='<div class="hint">사파리 아래 공유 버튼 → <b>홈 화면에 추가</b>를 누르면 앱처럼 열리고 기록도 안전하게 남습니다.</div>';
+ if(w===0)h+='<div class="hint ok">'+md(D.start)+'에 시작합니다. 미리 해 봐도 1주차 기준으로 보여 줍니다.</div>';
+ h+='<div class="card"><div class="row"><b>'+(w||1)+'주차</b><span class="tag">'+md(t)+'</span></div><div class="sub" style="margin-top:4px">'+r.t+'</div>';
+ const lastLight=D.lastLight||0;
+ if(w>=7&&w-lastLight>=6)h+='<div class="sub" style="color:var(--warn);margin-top:4px">6주 넘게 달렸습니다. 이번 주는 가벼운 주(세트 절반) 권장</div>';
+ h+='</div>';
+ if(D.draft)return h+vDraft();
+ const nd=nextDay(),l=lastOfPlan();
+ h+='<div class="card"><div class="sub">이번 주 갈 수 있는 날</div><div class="seg" style="margin-top:6px"><button data-plan="4" class="'+(D.plan==4?'on':'')+'">주 4일</button><button data-plan="3" class="'+(D.plan==3?'on':'')+'">주 3일</button></div>';
+ h+='<label class="lbl"><input type="checkbox" id="short" '+(D.short?'checked':'')+'> 오늘 1시간만 (1~4번만)</label>';
+ h+='<label class="lbl"><input type="checkbox" id="light" '+(D.light?'checked':'')+'> 가벼운 주 (세트 절반)</label>';
+ h+='<div class="chips">'+PLANS[D.plan].map(d=>'<button data-day="'+d+'" class="'+(d===nd?'next':'')+'">'+d+(d===nd?' (다음)':'')+'</button>').join('')+'</div>';
+ if(D.plan==3&&l&&dayDiff(t,l.date)<2)h+='<div class="hint">'+md(l.date)+'에 '+l.day+'를 했습니다. 전신은 하루 띄우기 : 오늘은 쉬거나 걷기 30분</div>';
+ h+='<button class="btn" data-day="'+nd+'">'+nd+' 시작</button>';
+ h+='<div class="sub" style="margin-top:8px">'+DAYS[nd].filter((_,i)=>!D.short||i<4).map((e,i)=>(i<4?(i+1)+'. ':'+ ')+e.n).join('<br>')+(D.short?'':'<br>+ 유산소 20분 (경사 5~10% 빠르게 걷기)')+'</div></div>';
+ h+=vDaily(t);
+ return h;
+}
+function vDaily(t){
+ const c=D.chk[t]||{};const trained=D.logs.some(l=>l.date===t);
+ const items=[['m3','3끼 다 먹음 (끼니마다 단백질 반찬)'],['p1','프로틴 1스쿱'],['p2','프로틴 1스쿱 (두 번째)'],['st','점심 스트레칭 5분'],['wk',trained?'유산소 20분':'운동 없는 날 : 빠르게 걷기 30분']];
+ if(D.food>=1)items.splice(3,0,['milk','프로틴 1번은 우유 400ml에']);
+ if(D.food>=2)items.splice(4,0,['rice','저녁 밥 2/3공기 더']);
+ return '<div class="card"><div class="row"><b>오늘 체크</b><span class="tag">'+items.filter(i=>c[i[0]]).length+'/'+items.length+'</span></div>'+items.map(([k,txt])=>'<label class="chk"><input type="checkbox" data-chk="'+k+'" '+(c[k]?'checked':'')+'> '+txt+'</label>').join('')+'</div>';
+}
+function vDraft(){
+ const d=D.draft;const r=rule(d.week);let h='<div class="card"><div class="row"><b>'+d.day+(d.short?' (1시간)':'')+(d.light?' (가벼운 주)':'')+'</b><button class="btn small gray" id="cancel">그만두기</button></div><div class="sub">자전거 5분 → 바벨 종목은 가벼운 세트 2개 먼저 → 스쿼트 안전바, 벤치 세이프티</div></div>';
+ d.ex.forEach((e,ei)=>{const ex=findEx(d.day,e.n);const s=suggest(ex);const unit=ex.t==='sec'?'초':'회';
+  h+='<div class="card"><div class="row"><b>'+(ei<4?(ei+1)+'. ':'+ ')+esc(e.n)+'</b><span class="tag">'+ex.s+'x'+(ex.lo===ex.hi?ex.lo:ex.lo+'~'+ex.hi)+unit+'</span></div>';
+  if(ex.note)h+='<div class="sub">'+esc(ex.note)+'</div>';
+  h+='<div class="sub" style="'+(s.up?'color:var(--ok)':'')+'">'+esc(s.msg)+'</div>';
+  e.sets.forEach((st,si)=>{h+='<div class="set'+(st.done?' done':'')+(st.opt?' opt':'')+'"><span class="n">'+(st.opt?'선택':si+1)+'</span>'+
+   (ex.t==='sec'?'<span class="sub" style="text-align:center">-</span>':'<input inputmode="decimal" placeholder="'+(ex.t==='bw'?'추가kg':'kg')+'" value="'+esc(st.w)+'" data-e="'+ei+'" data-s="'+si+'" data-f="w">')+
+   '<input inputmode="numeric" placeholder="'+ex.hi+unit+'" value="'+esc(st.r)+'" data-e="'+ei+'" data-s="'+si+'" data-f="r">'+
+   '<button class="ck" data-ck="'+ei+'_'+si+'">✓</button></div>'});
+  h+='<label class="lbl"><input type="checkbox" data-hard="'+ei+'" '+(e.hard?'checked':'')+'> 버거웠음 (자세 무너짐, '+r.left+'개 못 남김) → 다음에 안 올림</label></div>';
+ });
+ h+='<div class="card"><div class="sub">'+(d.short?'1시간 날 : 여기까지. 스트레칭 5분':'유산소 20분 (말은 되는데 숨찬 정도) → 스트레칭 5분')+'</div><button class="btn" id="finish">운동 끝, 저장</button></div>';
+ return h;
+}
+function weekAvgs(){const by={};for(const [d,kg] of Object.entries(D.wt)){const w=wkOf(d);if(w<1)continue;(by[w]=by[w]||[]).push(+kg)}
+ const out={};for(const w in by)out[w]=by[w].reduce((a,b)=>a+b,0)/by[w].length;return out}
+function advice(){
+ const cur=wkOf(today()),A=weekAvgs(),c=cur-1;
+ if(c<3)return{cls:'',t:'첫 2주는 수분으로 빨리 늘 수 있어 판단하지 않습니다. 3주차가 끝나면 판단합니다.'};
+ if(D.foodAt){const fw=wkOf(D.foodAt);if(c<fw+2)return{cls:'',t:md(D.foodAt)+'에 먹는 양을 바꿨습니다. 바꾼 뒤 2주가 지나야 다시 판단합니다.'}}
+ const dl=w=>(A[w]!=null&&A[w-1]!=null)?A[w]-A[w-1]:null;
+ const d1=dl(c),d2=c-1>=3?dl(c-1):null;
+ if(d1==null)return{cls:'',t:'지난주 또는 그 전 주 체중 기록이 없어 판단할 수 없습니다.'};
+ const f=x=>(x>=0?'+':'')+x.toFixed(2)+'kg';
+ if(d2!=null&&d1<0.1&&d2<0.1)return{cls:'bad',t:'2주 연속 '+f(d2)+', '+f(d1)+' → 한 단계 더 먹기'+(D.food>=2?' (이미 2단계 : 간식 하나 더)':''),act:'up'};
+ if(d2!=null&&d1>0.4&&d2>0.4)return{cls:'bad',t:'2주 연속 '+f(d2)+', '+f(d1)+' → 마지막에 더한 것 하나 빼기',act:'down'};
+ if(d1>=0.15&&d1<=0.3)return{cls:'ok',t:'지난주 '+f(d1)+' → 딱 좋음. 그대로'};
+ return{cls:'',t:'지난주 '+f(d1)+' → 그대로 두고 다음 주 다시 보기'};
+}
+function vWeight(){
+ const t=today(),A=weekAvgs(),cur=wkOf(t),a=advice();
+ const last=Object.keys(D.wt).sort().pop();
+ let h='<div class="card"><b>오늘 아침 체중</b><div class="sub">화장실 다녀와서, 같은 저울</div><div class="row" style="margin-top:8px"><input class="wide" type="number" inputmode="decimal" step="0.1" id="wtin" value="'+(D.wt[t]??'')+'" placeholder="'+(last?D.wt[last]:'63.0')+'" style="flex:1"><button class="btn small" id="wtsave">저장</button></div></div>';
+ h+='<div class="hint '+a.cls+'">'+a.t+'</div>';
+ h+='<div class="card"><div class="row"><b>먹는 양 단계</b><span class="tag">'+D.food+'단계</span></div><div class="sub" style="margin-top:4px">'+FOOD[D.food]+'</div><div class="row" style="margin-top:10px"><button class="btn small gray" id="fdn" '+(D.food<=0?'disabled':'')+'>한 단계 빼기</button><button class="btn small" id="fup" '+(D.food>=2?'disabled':'')+'>한 단계 더</button></div></div>';
+ h+='<div class="card"><b>주 평균</b><table><tr><th>주차</th><th>평균</th><th>변화</th></tr>';
+ for(let w=Math.max(1,cur);w>=1;w--){const v=A[w];const p=A[w-1];h+='<tr><td>'+w+'주'+(w===cur?' (이번 주)':'')+'</td><td>'+(v!=null?v.toFixed(2):'-')+'</td><td>'+(v!=null&&p!=null?((v-p>=0?'+':'')+(v-p).toFixed(2)):'-')+'</td></tr>'}
+ h+='</table><div class="sub" style="margin-top:6px">목표 : 주 +0.15~0.3kg, 68kg까지</div></div>';
+ const mk=t.slice(0,7);
+ h+='<div class="card"><b>허리둘레 (배꼽 높이, 한 달에 한 번)</b><div class="row" style="margin-top:8px"><input class="wide" type="number" inputmode="decimal" step="0.1" id="wsin" value="'+(D.waist[mk]??'')+'" placeholder="cm" style="flex:1"><button class="btn small" id="wssave">저장</button></div><div class="sub" style="margin-top:6px">'+Object.entries(D.waist).sort().map(([m,v])=>esc(m+' : '+v+'cm')).join('<br>')+'</div><div class="sub">체중보다 눈에 띄게 빨리 늘면 한 단계 빼기</div></div>';
+ const recent=Object.entries(D.wt).sort().reverse().slice(0,14);
+ if(recent.length)h+='<div class="card"><b>최근 기록</b><table>'+recent.map(([d,k])=>'<tr><td>'+esc(md(d))+'</td><td>'+esc(k)+'kg</td><td><button class="btn small gray" data-delwt="'+esc(d)+'">지우기</button></td></tr>').join('')+'</table></div>';
+ return h;
+}
+function vLog(){
+ let h='';const logs=[...D.logs].sort((a,b)=>b.ts-a.ts);
+ const key=['스쿼트','벤치프레스','데드리프트','루마니안 데드'];
+ h+='<div class="card"><b>주요 종목 최근 무게</b><table>'+key.map(k=>{const x=history(k)[0];return '<tr><td>'+k+'</td><td>'+(x?Math.max(...x.sets.map(s=>+s.w||0))+'kg x '+x.sets.map(s=>s.r).join(','):'-')+'</td><td class="sub">'+(x?md(x.date):'')+'</td></tr>'}).join('')+'</table></div>';
+ if(!logs.length)h+='<div class="card sub">아직 기록이 없습니다. 오늘 탭에서 운동을 시작하세요.</div>';
+ logs.slice(0,60).forEach(l=>{h+='<div class="card"><div class="row"><b>'+esc(md(l.date)+' '+l.day)+(l.short?' (1시간)':'')+(l.light?' (가벼운 주)':'')+'</b><button class="btn small gray" data-dellog="'+l.ts+'">지우기</button></div><div class="sub" style="margin-top:4px">'+l.ex.map(e=>esc(e.n+' '+e.sets.map(s=>(s.w!==''?s.w+'x':'')+s.r).join(', '))+(e.hard?' (버거웠음)':'')).join('<br>')+'</div></div>'});
+ h+='<div class="card"><b>설정</b><div class="sub" style="margin-top:6px">시작일 (1주차 첫날)</div><input type="date" id="startin" value="'+D.start+'"><div class="sub" style="margin-top:12px">기록 백업 : 폰을 바꾸거나 사파리 기록을 지우기 전에</div><div class="row" style="margin-top:8px"><button class="btn small" id="exp">백업 파일 저장</button><label class="btn small gray">백업 불러오기<input type="file" id="imp" accept=".json,application/json" hidden></label></div></div>';
+ return h;
+}
+function vGuide(){return '<div class="card guide">'+
+'<h3>1. 일요일 밤 : 다음 주 정하기</h3><ul><li>4일 가능 → 주 4일 (월 하체A, 화 상체A, 목 하체B, 금 상체B)</li><li>3일만 → 주 3일 (월 전신A, 수 전신B, 금 전신C)</li><li>1시간만 되는 날 → 1~4번만</li><li>하루 빠지면 앱이 다음 운동을 이어서 보여 줌. 전신은 하루 띄우기</li></ul>'+
+'<h3>2. 헬스장 순서</h3><ul><li>자전거 5분 (살짝 숨찰 정도)</li><li>바벨 종목은 가벼운 세트 2개 먼저 (스쿼트 : 맨몸 10회, 빈 봉 5회)</li><li>스쿼트 안전바 : 가장 깊이 앉았을 때 봉보다 살짝 낮게. 벤치는 세이프티</li><li>휴식 : 바벨 2~3분, 나머지 1~1.5분 (✓ 누르면 타이머 자동)</li><li>긴 날은 유산소 20분 : 경사 5~10% 빠르게 걷기, 말은 되는데 숨찬 정도</li><li>스트레칭 5분</li></ul>'+
+'<h3>3. 복귀 4주</h3><ul><li>1주 : 2세트, 4개 남기고 끝</li><li>2주 : 2~3세트, 3개 남기고 끝</li><li>3~4주 : 3세트, 2개 남기고 끝</li><li>5주~ : 3세트, 1~2개 남기고 끝</li><li>근육통이 다음 운동까지 남으면 세트 늘리지 않기</li><li>"4개 남기고" = 8회 하고 내려놓을 때 "4개는 더 하겠다" 싶은 무게</li></ul>'+
+'<h3>4. 무게 올리기 (앱이 자동 제안)</h3><ul><li>모든 세트가 범위 끝 숫자 채우고, 자세 안 무너지고, 그 주 기준만큼 남았으면 올림</li><li>바벨 +2.5kg, 덤벨 한 손 +1~2kg, 머신 한 칸</li><li>버거웠으면 "버거웠음" 체크 → 다음에 안 올림</li><li>올렸는데 범위 첫 숫자도 못 하면 원래 무게로</li><li>6~8주마다, 또는 2번 연속 기록 그대로면 가벼운 주 (세트 절반)</li><li>참고 : 한 번도 안 막히면 12주 뒤 스쿼트 약 47.5, 벤치 약 67.5, 데드 약 57.5kg. 보통은 더 느림</li></ul>'+
+'<h3>5. 식단</h3><ul><li>3끼 거르지 않기, 끼니마다 단백질 반찬 하나 (계란 2개, 두부 반 모, 고기나 생선)</li><li>프로틴 1스쿱씩 두 번 (운동 날 : 운동 후 1, 아침이나 간식 1)</li><li>단백질 3끼 약 60g + 프로틴 약 45g = 약 105g. 스쿱당 g은 통 뒷면 확인</li></ul>'+
+'<h3>6. 체중으로 먹는 양 조절 (체중 탭이 판단)</h3><ul><li>매일 아침 기록 → 주 평균 비교, 3주차부터 판단</li><li>+0.15~0.3kg → 그대로</li><li>2주 연속 +0.1kg 미만 → 1단계 우유 400ml(약 260kcal) → 2주 더 안 늘면 2단계 밥 2/3공기</li><li>2주 연속 +0.4kg 넘음 → 마지막에 더한 것 하나 빼기</li></ul>'+
+'<h3>7. 회사에서</h3><ul><li>1시간마다 일어나 2~3분 걷기</li><li>점심 후 5분, 아프지 않은 범위에서 천천히 : 문틀 가슴 스트레칭 30초 x2, 고관절 앞 (무릎 꿇고 엉덩이에 힘, 허리 젖히지 않기) 30초 좌우 x2, 턱 당기기 (고개 숙이지 말고 수평으로 뒤로) 10회</li></ul>'+
+'<h3 style="color:var(--bad)">8. 바로 멈추기</h3><ul><li>가슴 통증, 어지럼, 숨이 심하게 참 → 중단</li><li>가슴 통증이 몇 분 넘게 계속, 쓰러짐, 숨 쉬기 힘듦 → 바로 119</li><li>예상보다 훨씬 심한 근육통, 콜라처럼 진한 소변, 팔다리 힘이 심하게 빠짐 중 하나라도 → 바로 병원</li><li>관절 찌르는 통증, 저림 → 그 종목 중단</li></ul></div>'}
+
+// ---------- 이벤트 ----------
+$('#nav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;D.tab=b.dataset.tab;save();render();window.scrollTo(0,0)});
+$('#tplus').onclick=()=>{tEnd=Math.max(tEnd,Date.now())+30000;$('#timer').classList.remove('end');tick()};
+$('#tclose').onclick=stopTimer;
+V.addEventListener('click',e=>{const b=e.target.closest('button,[data-chk]');if(!b)return;
+ if(b.dataset.plan){D.plan=+b.dataset.plan;save();render();return}
+ if(b.dataset.day){if(D.draft&&!confirm('진행 중인 운동이 있습니다. 새로 시작할까요?'))return;
+  const l=lastOfPlan();if(D.plan==3&&l&&dayDiff(today(),l.date)<2&&!confirm('전신은 하루 띄우는 게 원칙입니다. 그래도 시작할까요?'))return;
+  startDraft(b.dataset.day);return}
+ if(b.dataset.ck){const [ei,si]=b.dataset.ck.split('_').map(Number);const st=D.draft.ex[ei].sets[si];const ex=findEx(D.draft.day,D.draft.ex[ei].n);
+  st.done=!st.done;if(st.done&&st.r==='')st.r=String(ex.hi);
+  save();const row=b.closest('.set');row.classList.toggle('done',st.done);row.querySelector('[data-f="r"]').value=st.r;
+  if(st.done)startTimer(REST[ex.t]);return}
+ if(b.id==='finish'){finish();return}
+ if(b.id==='cancel'){if(confirm('이번 운동을 기록 없이 그만둘까요?')){D.draft=null;save();stopTimer();render()}return}
+ if(b.id==='wtsave'){const v=parseFloat($('#wtin').value);if(!(v>30&&v<200)){alert('체중을 숫자로 넣어 주세요');return}D.wt[today()]=v;save();render();return}
+ if(b.id==='wssave'){const v=parseFloat($('#wsin').value);if(!(v>40&&v<150)){alert('허리둘레를 cm로 넣어 주세요');return}D.waist[today().slice(0,7)]=v;save();render();return}
+ if(b.id==='fup'){D.food=Math.min(2,D.food+1);D.foodAt=today();save();render();return}
+ if(b.id==='fdn'){D.food=Math.max(0,D.food-1);D.foodAt=today();save();render();return}
+ if(b.dataset.delwt){if(confirm(md(b.dataset.delwt)+' 체중을 지울까요?')){delete D.wt[b.dataset.delwt];save();render()}return}
+ if(b.dataset.dellog){if(confirm('이 운동 기록을 지울까요?')){D.logs=D.logs.filter(l=>String(l.ts)!==b.dataset.dellog);save();render()}return}
+ if(b.id==='exp'){exportData();return}
+});
+V.addEventListener('change',e=>{const t=e.target;
+ if(t.id==='short'){D.short=t.checked;save();render();return}
+ if(t.id==='light'){D.light=t.checked;save();render();return}
+ if(t.dataset.chk){const d=today();D.chk[d]=D.chk[d]||{};D.chk[d][t.dataset.chk]=t.checked;save();render();return}
+ if(t.dataset.hard!=null){D.draft.ex[+t.dataset.hard].hard=t.checked;save();return}
+ if(t.id==='startin'&&t.value){D.start=t.value;save();render();return}
+ if(t.id==='imp'&&t.files[0]){const fr=new FileReader();fr.onload=()=>{let x;try{x=JSON.parse(fr.result);if(!x||!Array.isArray(x.logs))throw 0}catch(err){alert('백업 파일이 아닙니다');return}
+  const n=clean(x);if(confirm('백업(운동 '+n.logs.length+'회, 체중 '+Object.keys(n.wt).length+'일)으로 지금 기록을 바꿀까요?')){const old=D;D=n;try{render()}catch(err){D=old;render();alert('백업을 열 수 없습니다');return}save()}};fr.readAsText(t.files[0])}
+});
+V.addEventListener('input',e=>{const t=e.target;if(t.dataset.f&&D.draft){const st=D.draft.ex[+t.dataset.e].sets[+t.dataset.s];st[t.dataset.f]=t.value.replace(',','.');save()}});
+async function exportData(){
+ const name='운동기록_'+today()+'.json';const blob=new Blob([JSON.stringify(D)],{type:'application/json'});
+ const file=new File([blob],name,{type:'application/json'});
+ if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:name});return}catch(e){if(e.name==='AbortError')return}}
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();
+}
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js');
+render();
+</script>
+</body>
+</html>
