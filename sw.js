@@ -1,4 +1,4 @@
-const C='workout-v19';
+const C='workout-v20';
 const A=['./','index.html','exdata.js','manifest.webmanifest','icon-180.png','icon-512.png','fonts/anton.woff2'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(A)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('workout-')&&k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
