@@ -242,6 +242,59 @@ body.in-workout #nav{display:none}body.in-workout{padding-bottom:0}
 .xpburst.still{animation:none;opacity:1;transform:translate(-50%,0);max-width:86vw;text-align:center;font-size:20px}
 .pr-rule{margin:10px 0 0;font-size:14px;font-weight:700;color:var(--sub);text-align:center}@keyframes tickPulse{0%{transform:scale(1)}30%{transform:scale(1.18)}100%{transform:scale(1)}}
 .btn:active,.chipbtn:active,.stepper button:active{transform:translate(2px,2px) scale(.98)}
+
+/* v17 화면 다듬기: 테두리 줄이기, 노랑은 주 버튼만, 쉬는 시간은 파란 화면 */
+.btn{border:0;border-radius:14px;box-shadow:0 4px 0 #C99A00}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #C99A00}
+.btn.ghost,.btn.danger,.btn.sm{background:#fff;box-shadow:inset 0 0 0 1.5px #C9D4E2}
+.btn.ghost:active,.btn.danger:active,.btn.sm:active{box-shadow:inset 0 0 0 1.5px #C9D4E2}
+.poster .btn{border:0;border-radius:14px;box-shadow:0 4px 0 #C99A00}
+.chipbtn{border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px #C9D4E2}
+.chipbtn.on{background:#0B0F1A;color:#fff;box-shadow:none}
+.seg{border:0;background:#DCE6F2;border-radius:999px;padding:4px;gap:4px}
+.seg button{border:0!important;border-radius:999px;background:transparent}
+.seg button.on{background:#0B0F1A;color:#fff}
+.icon-btn{border:0;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px #C9D4E2}
+.fprog{height:10px;border:0;border-radius:999px;background:#DCE6F2}.fprog i{background:#1F5BFF;border-radius:999px}
+.fsets i{border:0;border-radius:999px;height:10px;background:#C9D4E2}
+.stepper{border:0;border-radius:18px;background:#fff;padding:8px}
+.stepper button{border:0;border-radius:50%;width:56px;height:56px;background:#DCE6F2;font-size:28px}
+.motion{border:0;border-radius:14px;background:#0B0F1A;aspect-ratio:16/9}
+.motion-info{border:0}
+.plateviz{border:0;border-radius:18px;background:#fff;margin:0 0 14px}
+.score{border:0;border-radius:18px;box-shadow:none}
+.score>div{border-left:1px solid #E3EAF3}.score>div:first-child{border-left:0}.xp{border-top:1px solid #E3EAF3}
+.wkstrip{border:0;gap:6px;overflow:visible}
+.wkstrip span{border:0!important;border-radius:50%;aspect-ratio:1;min-height:0;background:#fff;box-shadow:inset 0 0 0 1.5px #C9D4E2}
+.wkstrip .on{background:#FFC400;color:#0B0F1A;box-shadow:none}.wkstrip .on:after{border-color:#0B0F1A}
+.wkstrip .now{box-shadow:inset 0 0 0 3px #1F5BFF}
+.next-card{border-radius:18px}
+.feel-row .chipbtn.on{background:#0B0F1A;color:#fff}
+.feel-ask{border:0;border-radius:18px;background:#fff;color:#0B0F1A}
+.cta{border-top:1px solid #C9D4E2}
+.focus.rest{background:#1F5BFF;color:#fff;margin:0 -16px;padding:2px 16px calc(110px + env(safe-area-inset-bottom));min-height:100vh}
+.focus.rest+.cta{background:#1F5BFF;border-top-color:rgba(255,255,255,.35)}
+.focus.rest .fname,.focus.rest .rest-cap,.focus.rest .feel p,.focus.rest .ftime{color:#fff}
+.focus.rest .fprog{background:rgba(255,255,255,.3)}.focus.rest .fprog i{background:#FFC400}
+.focus.rest .ring svg circle:first-child{stroke:rgba(255,255,255,.28)!important}
+.focus.rest #roundProgress{stroke:#FFC400!important}
+.focus.rest .round-number{color:#fff}
+.focus.rest .round-label,.focus.rest .round-count{color:#fff!important}
+.focus.rest .feel-ask p{color:#0B0F1A}
+.focus.rest .ring.final .round-number{animation-name:finalBlinkR,tickPulse}
+.focus.rest .ring.final #roundProgress{animation-name:finalStrokeR}
+.focus.rest .chipbtn,.focus.rest .icon-btn,.focus.rest .btn{color:#0B0F1A}.focus.rest .chipbtn.on,.focus.rest .rest-chips .chipbtn.on{background:#0B0F1A;color:#fff}
+.stats{border:0;border-radius:16px;background:#fff}.stat{border-left:1px solid #E3EAF3}
+.fphoto{border:0;border-radius:14px;background:#0B0F1A}
+.pr-live{border:0;border-radius:14px;background:#1F5BFF;color:#fff}
+.ready-notice{border:0!important;border-radius:14px;background:#0B0F1A!important;color:#fff!important}
+.rest-chips .chipbtn{min-height:44px;padding:0 12px}
+.pr{background:#E4ECFF}
+.xpburst{top:14%;border:0;border-radius:999px;box-shadow:0 4px 0 #C99A00}
+.next-card span,.nc-pl{color:#A9C1FF}
+@keyframes finalBlinkR{0%{color:#FFC400}50%{color:#fff}100%{color:#FFC400}}
+@keyframes finalStrokeR{0%{stroke:#FFC400}50%{stroke:#fff}100%{stroke:#FFC400}}
+@media(prefers-reduced-motion:reduce){.focus.rest .ring.final .round-number{color:#FFC400}}
 </style>
 </head>
 <body>
@@ -602,7 +655,7 @@ function vRoutine(){return '<div class="card"><button class="text-link" style="m
 let SH=null;
 function openSheet(html){$('#sheet').innerHTML='<div class="grab"></div>'+html;$('#sheet').classList.add('show');$('#ov').classList.add('show');$('#sheet').scrollTop=0}
 function closeSheet(){$('#sheet').classList.remove('show');$('#ov').classList.remove('show');SH=null}
-function summarySheet(l,prs){const sets=l.ex.reduce((a,e)=>a+e.sets.length,0),g=gameStats(),earned=g.perLog[l.ts]||0,before=levelFor(g.xp-earned),up=g.level>before.level;openSheet(`<div class="result"><div class="stamp" aria-hidden="true"><div><b>${up?'레벨 업':'완료'}</b><small>${md(l.date)}</small></div></div><h2>${up?'레벨 업!':'오늘도 해냈어요'}</h2><p>${up?'레벨 '+before.level+'에서 레벨 '+g.level+([2,4,5,9].includes(g.level%10)&&g.level%100!==10?'가':'이')+' 됐어요':'한 세트씩 쌓은 오늘을 기억해요'}</p><div class="pill">${ico('xp',16)}경험치 +${earned}</div></div><div class="stats" style="margin-top:18px"><div class="stat"><b>${l.dur}분</b><span>함께한 시간</span></div><div class="stat"><b>${sets}</b><span>완료한 세트</span></div><div class="stat"><b>${fmtVol(vol(l))}</b><span>들어 올린 무게 합계</span></div></div>${prs.map(p=>'<div class="pr">'+ico('db',26)+'<span>'+esc(p.n)+'<br>'+esc(p.txt)+' 새 기록을 세웠어요</span></div>').join('')}<p class="pr-rule">무게와 횟수로 계산한 힘이 지금까지 이 종목에서 낸 최고보다 세지면 최고 기록이에요. 같은 무게로 더 많이 해도 돼요. 맨몸은 횟수, 시간 운동은 초로 봐요</p><button class="btn" data-act="gotolog">기록 보러 가기</button><button class="btn ghost" data-act="close">닫기</button>`)}
+function summarySheet(l,prs){const sets=l.ex.reduce((a,e)=>a+e.sets.length,0),g=gameStats(),earned=g.perLog[l.ts]||0,before=levelFor(g.xp-earned),up=g.level>before.level;openSheet(`<div class="result"><div class="stamp" aria-hidden="true"><div><b>${up?'레벨 업':'완료'}</b><small>${md(l.date)}</small></div></div><h2>${up?'레벨 업!':'오늘도 해냈어요'}</h2><p>${up?'레벨 '+before.level+'에서 레벨 '+g.level+([2,4,5,9].includes(g.level%10)&&g.level%100!==10?'가':'이')+' 됐어요':'한 세트씩 쌓은 오늘을 기억해요'}</p><div class="pill">${ico('xp',16)}경험치 +${earned}</div></div><div class="stats" style="margin-top:18px"><div class="stat"><b>${l.dur}분</b><span>함께한 시간</span></div><div class="stat"><b>${sets}</b><span>완료한 세트</span></div><div class="stat"><b>${vol(l)>0?fmtVol(vol(l)):'맨몸'}</b><span>${vol(l)>0?'들어 올린 무게 합계':'오늘은 맨몸 운동'}</span></div></div>${prs.map(p=>'<div class="pr">'+ico('db',26)+'<span>'+esc(p.n)+'<br>'+esc(p.txt)+' 새 기록을 세웠어요</span></div>').join('')}<p class="pr-rule">무게와 횟수로 계산한 힘이 지금까지 이 종목에서 낸 최고보다 세지면 최고 기록이에요. 같은 무게로 더 많이 해도 돼요. 맨몸은 횟수, 시간 운동은 초로 봐요</p><button class="btn" data-act="gotolog">기록 보러 가기</button><button class="btn ghost" data-act="close">닫기</button>`)}
 
 
 function recomputeLastLight(){const weeks=D.logs.filter(l=>l.light).map(l=>wkOf(l.date));if(weeks.length)D.lastLight=Math.max(...weeks);else delete D.lastLight}
@@ -659,7 +712,7 @@ function vDraft(){
  if(tableMode)return '<button class="btn" data-act="focusback">한 세트씩 보기</button>'+vDraftLegacy();
  const d=D.draft,next=focusPosition(d,false),rest=!!d.restEndTs&&!!next,p=rest?focusPosition():next,all=d.ex.flatMap(e=>e.sets),dn=all.filter(s=>s.done).length;
  const top='<div class="focus-top"><button class="icon-btn" data-act="focusmore" aria-label="운동 메뉴 열기">메뉴</button><div class="fprog" role="progressbar" aria-label="완료한 세트" aria-valuenow="'+dn+'" aria-valuemax="'+all.length+'"><i style="width:'+(all.length?dn/all.length*100:0).toFixed(1)+'%"></i></div><span class="ftime" id="el">'+Math.floor((Date.now()-d.startTs)/60000)+'분째</span></div>';
- if(rest){const nx=nextParts(next,d);return '<section class="focus">'+top+'<h2 class="fname">잠깐 쉬어요</h2><div class="rest-ring">'+ring(0,1,200,14,'ROUND 1','쉬는 시간')+'</div><p class="rest-cap">총 쉬는 시간을 골라요</p><div class="rest-chips" role="group" aria-label="쉬는 시간 정하기">'+[60,90,120,150,180].map(v=>'<button class="chipbtn'+(Math.round(d.restDuration)===v?' on':'')+'" data-act="restset" data-v="'+v+'">'+Math.floor(v/60)+':'+pad(v%60)+'</button>').join('')+'</div><div class="feel"><p>방금 세트 어땠어요? 가벼웠다면 다음 세트 무게를 올릴지 골라요</p><div class="feel-row">'+[['easy','가벼웠어요'],['ok','딱 좋아요'],['hard','힘들었어요']].map(([k,t])=>{const fv=d.restFocus&&d.ex[d.restFocus.ei]?.sets[d.restFocus.si]?.feel;return '<button class="chipbtn'+(fv===k?' on':'')+'" data-act="feel" data-v="'+k+'"'+(fv?' disabled':'')+'>'+t+'</button>'}).join('')+'</div>'+feelAskHtml(d)+'</div><div class="next-card">'+thumb(next.e.n)+'<div><span>다음 세트</span><b>'+esc(nx.name)+'</b><small>'+esc(nx.sub)+'</small>'+(nx.pl?'<em class="nc-pl">'+esc(nx.pl)+'</em>':'')+'</div></div><p id="restHint" class="rest-hint">시간이 끝나면 다음 세트를 보여드려요</p></section><div class="cta"><div class="rest-actions" id="restActions"><button class="btn ghost" data-act="t30">30초 더 쉬기</button><button class="btn done" data-act="tclose">바로 다음 세트</button></div></div>'}
+ if(rest){const nx=nextParts(next,d);return '<section class="focus rest">'+top+'<h2 class="fname">잠깐 쉬어요</h2><div class="rest-ring">'+ring(0,1,200,14,'ROUND 1','쉬는 시간')+'</div><p class="rest-cap">총 쉬는 시간을 골라요</p><div class="rest-chips" role="group" aria-label="쉬는 시간 정하기">'+[60,90,120,150,180].map(v=>'<button class="chipbtn'+(Math.round(d.restDuration)===v?' on':'')+'" data-act="restset" data-v="'+v+'">'+Math.floor(v/60)+':'+pad(v%60)+'</button>').join('')+'</div><div class="feel"><p>방금 세트 어땠어요? 가벼웠다면 다음 세트 무게를 올릴지 골라요</p><div class="feel-row">'+[['easy','가벼웠어요'],['ok','딱 좋아요'],['hard','힘들었어요']].map(([k,t])=>{const fv=d.restFocus&&d.ex[d.restFocus.ei]?.sets[d.restFocus.si]?.feel;return '<button class="chipbtn'+(fv===k?' on':'')+'" data-act="feel" data-v="'+k+'"'+(fv?' disabled':'')+'>'+t+'</button>'}).join('')+'</div>'+feelAskHtml(d)+'</div><div class="next-card">'+thumb(next.e.n)+'<div><span>다음 세트</span><b>'+esc(nx.name)+'</b><small>'+esc(nx.sub)+'</small>'+(nx.pl?'<em class="nc-pl">'+esc(nx.pl)+'</em>':'')+'</div></div><p id="restHint" class="rest-hint">시간이 끝나면 다음 세트를 보여드려요</p></section><div class="cta"><div class="rest-actions" id="restActions"><button class="btn ghost" data-act="t30">30초 더 쉬기</button><button class="btn done" data-act="tclose">바로 다음 세트</button></div></div>'}
  if(!p)return '<section class="focus">'+top+'<div class="stamp" aria-hidden="true"><div><b>완료</b><small>'+md(d.date)+'</small></div></div><h2 class="fname" style="text-align:center">오늘 운동을 다 했어요</h2><p class="sub" style="text-align:center">'+dn+'세트를 마쳤어요. 기록하고 경험치를 받아요</p></section><div class="cta"><button class="btn done" data-act="finish">운동 끝내고 기록하기</button></div>';
  fillFocus(p);const fx=exOf(p.e,d.day),fu=fx.t==='sec'?'초':'회',nxt=p.si===p.e.sets.length-1?d.ex.find((e,i)=>i>p.ei&&!e.skipped&&e.sets.some(s=>!s.done)):null,order=d.ex.filter(e=>!e.skipped),pos=order.indexOf(p.e)+1,sg=suggest(fx),x=EXDB[p.e.n];
  const sets='<div class="fsets">'+p.e.sets.map((s,i)=>'<i class="'+(s.done?'done':i===p.si?'now':'')+'"></i>').join('')+'<b class="set-count"><span class="disp">'+(p.si+1)+'/'+p.e.sets.length+'</span> 세트</b><span class="goal-chip">목표 '+(fx.lo===fx.hi?fx.lo:fx.lo+'~'+fx.hi)+fu+'</span></div>';
