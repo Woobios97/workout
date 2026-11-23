@@ -1,5 +1,5 @@
-const C='workout-v11';
-const A=['./','index.html','exdata.js','manifest.webmanifest','icon-180.png','icon-512.png','art/mascot.png','art/mascot2.png','art/cloud.png','art/flame.png','art/trophy.png','art/coin.png','art/palm.png','art/bg.jpg','art/sun.png','art/mascotgold.png','art/golddb.png'];
+const C='workout-v12';
+const A=['./','index.html','exdata.js','manifest.webmanifest','icon-180.png','icon-512.png','art/mascot.png','art/mascot2.png','art/cloud.png','art/flame.png','art/trophy.png','art/coin.png','art/palm.png','art/bg.jpg','art/sun.png','art/mascotgold.png','art/golddb.png','fonts/anton.woff2'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(A)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('workout-')&&k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
