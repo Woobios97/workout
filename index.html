@@ -125,12 +125,6 @@ nav button svg{width:23px;height:23px}
 nav button.on{background:rgba(255,255,255,.13);color:var(--tx)}
 nav.mini{transform:translateX(-50%) scale(.84) translateY(10px)}
 nav.mini button span{display:none}
-#island{position:fixed;top:calc(env(safe-area-inset-top) + 8px);left:50%;transform:translateX(-50%) translateY(-160%);display:flex;align-items:center;gap:10px;padding:7px 7px 7px 8px;border-radius:99px;background:rgba(10,10,12,.85);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.1);box-shadow:0 12px 34px rgba(0,0,0,.55);z-index:30;transition:transform .45s cubic-bezier(.2,.9,.3,1.2),background .3s}
-#island.show{transform:translateX(-50%) translateY(0)}
-#island svg{transform:rotate(-90deg);display:block}
-#island .t{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;min-width:58px}
-#island button{border:0;border-radius:99px;padding:8px 12px;background:rgba(255,255,255,.1);color:var(--tx);font-size:13px;font-weight:800}
-#island.end{background:var(--ac);color:var(--on)}#island.end button{background:rgba(0,0,0,.12);color:var(--on)}
 #ov{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.3s;z-index:40}
 #ov.show{opacity:1;pointer-events:auto}
 #sheet{position:fixed;left:0;right:0;bottom:0;max-height:90vh;overflow:auto;-webkit-overflow-scrolling:touch;background:rgba(24,24,29,.94);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);border-radius:32px 32px 0 0;border-top:1px solid rgba(255,255,255,.12);padding:10px 18px calc(env(safe-area-inset-bottom) + 20px);transform:translateY(105%);transition:transform .4s cubic-bezier(.2,.9,.3,1);z-index:41}
@@ -160,7 +154,7 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
 /* 하늘과 클레이: 기존 기록 구조는 그대로 유지해요. */
 :root{--bg:#2B8CFF;--s1:#fff;--s2:#F0F5FC;--s3:#C7D5E8;--tx:#0E2145;--sub:#5B6B8C;--dim:#5B6B8C;--bad:#B42335;--warn:#875000;--line:#DFE7F2;--r:28px;--ac:#A63E00;--acrgb:255,122,26;--ac2:#2765B4;--ac2rgb:43,140,255;--ac2t:#245DA4;--on:#0E2145}
 html{background:#2B8CFF}body{background:linear-gradient(#2B8CFF,#7CC0FF) fixed;min-height:100dvh}header{color:#fff}header h1{font-size:34px;font-weight:900;text-shadow:0 2px 1px #17477B}header .eyebrow{color:#fff;font-weight:800;text-shadow:0 1px 2px #16406B}
-.bgfx{z-index:0;background:url('art/cloud.png') center bottom / min(120vw,700px) auto no-repeat;opacity:.85}.bgfx:before,.bgfx:after{display:none}header,main{position:relative;z-index:1}main{max-width:660px;margin:auto}.card,.note{background:#fff;box-shadow:0 6px 0 rgba(0,40,120,.08),0 14px 30px rgba(0,40,120,.12);border:0;border-radius:28px}.btn,.btn:not(.ghost):not(.danger):not(.sm),.seg button.on{background:#FF7A1A;color:#0E2145;box-shadow:0 5px 0 #BD4A00;font-weight:900}.btn:active,.seg button:active{transform:translateY(4px);box-shadow:0 1px 0 #BD4A00}.btn.ghost{background:#EAF1FB;box-shadow:0 4px 0 #C7D5E8}.btn.danger{background:#FFE9E9;color:#A51D31;box-shadow:0 4px 0 #E9B8C0}.btn.sm{background:#FFC83D;box-shadow:0 4px 0 #C69A25;color:#0E2145}.seg button.on{box-shadow:0 3px 0 #C69A25;background:#FFC83D}.note.warn,.note.bad,.note.ac{background:#fff;color:var(--tx)}.pill.ac,.day.next,.day.next small,.tip.up,.pr b{color:#A63E00}.tip.down{color:#875000}details ul{color:var(--sub)}nav{background:rgba(255,255,255,.93);border-color:#fff;box-shadow:0 6px 0 #164F8C18,0 12px 35px #164F8C30}nav button{color:var(--sub);padding:8px 16px}nav button.on{background:#FFC83D;color:var(--tx)}#sheet{background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 -15px 50px #0E214530}#island{background:rgba(255,255,255,.94);box-shadow:0 6px 0 #164F8C18,0 12px 35px #164F8C30;border:2px solid #fff;padding-left:40px}#island:before{content:'';position:absolute;left:1px;width:45px;height:45px;background:url('art/cloud.png') center/contain no-repeat}#island button{background:#EAF1FB}#island.end{background:#FFC83D}#toast{box-shadow:0 6px 0 #164F8C18,0 12px 35px #164F8C30}.set.done .ck{background:#FF7A1A;border-color:#C85200;color:#0E2145}.ck{box-shadow:0 3px 0 #C7D5E8}.ck:active{transform:translateY(3px)}.set.done{background:#FFF5E8;border-radius:16px}.prog{height:18px;border:2px solid #D1DEEF;background:#EAF1FB}.prog i{background:linear-gradient(90deg,#FFC83D,#FF7A1A)}.gamehero{text-align:center;padding:16px 20px 22px;background:#fff;border-radius:32px;box-shadow:0 6px 0 #00307814,0 14px 30px #0030781f;margin:12px 0 20px}.mascot{display:block;width:170px;height:150px;object-fit:contain;margin:0 auto}.gamehero h2{font-size:28px;font-weight:900;margin:0 0 6px}.gamehero .prog{margin:10px auto;max-width:280px}.artsmall{width:30px;height:30px;object-fit:contain;vertical-align:middle}.gamehero .streak{display:flex;align-items:center;justify-content:center;gap:5px;font-weight:800;color:var(--sub)}.roundhero{display:flex;align-items:center;flex-direction:column;color:#0E2145;margin:14px 0 22px}.roundhero .ring{border-radius:50%;background:#fff;box-shadow:0 6px 0 #00307814,inset 0 -8px 16px #C7D5E860}.roundhero>p{color:#fff;font-size:22px;font-weight:900;text-shadow:0 2px 1px #17477B;margin:14px 0 0}.ex.current{border:3px solid #FFC83D;box-shadow:0 7px 0 #D5A72D,0 16px 32px #0030781f}.ex.current h3{font-size:22px}.achievements{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.badge{background:#F0F5FC;border-radius:20px;padding:12px 5px;text-align:center;overflow-wrap:anywhere}.badge img{width:48px;height:48px;object-fit:contain}.badge.locked img{filter:grayscale(1);opacity:.3}.badge b{display:block;font-size:14px}.badge small{display:block;color:var(--sub);font-size:12px;margin-top:4px}.result{text-align:center}.result .mascot{height:150px}.result h2{font-size:30px!important}.xpburst{position:fixed;left:50%;top:42%;z-index:101;pointer-events:none;background:#FFF4CB;border-radius:99px;padding:9px 16px;color:#0E2145;font-size:28px;font-weight:900;box-shadow:0 5px 0 #E3B54B;animation:coinup .9s ease-out forwards}.xpburst img{width:38px;vertical-align:middle}@keyframes coinup{0%{transform:translate(-50%,20px);opacity:0}25%{opacity:1}100%{transform:translate(-50%,-95px);opacity:0}}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #0E2145;outline-offset:3px}@media(max-width:360px){nav button{padding:8px 13px}.set{gap:5px;grid-template-columns:25px 1fr 1fr 48px}.ck{width:48px}.gamehero{padding:14px}}
+.bgfx{z-index:0;background:url('art/cloud.png') center bottom / min(120vw,700px) auto no-repeat;opacity:.85}.bgfx:before,.bgfx:after{display:none}header,main{position:relative;z-index:1}main{max-width:660px;margin:auto}.card,.note{background:#fff;box-shadow:0 6px 0 rgba(0,40,120,.08),0 14px 30px rgba(0,40,120,.12);border:0;border-radius:28px}.btn,.btn:not(.ghost):not(.danger):not(.sm),.seg button.on{background:#FF7A1A;color:#0E2145;box-shadow:0 5px 0 #BD4A00;font-weight:900}.btn:active,.seg button:active{transform:translateY(4px);box-shadow:0 1px 0 #BD4A00}.btn.ghost{background:#EAF1FB;box-shadow:0 4px 0 #C7D5E8}.btn.danger{background:#FFE9E9;color:#A51D31;box-shadow:0 4px 0 #E9B8C0}.btn.sm{background:#FFC83D;box-shadow:0 4px 0 #C69A25;color:#0E2145}.seg button.on{box-shadow:0 3px 0 #C69A25;background:#FFC83D}.note.warn,.note.bad,.note.ac{background:#fff;color:var(--tx)}.pill.ac,.day.next,.day.next small,.tip.up,.pr b{color:#A63E00}.tip.down{color:#875000}details ul{color:var(--sub)}nav{background:rgba(255,255,255,.93);border-color:#fff;box-shadow:0 6px 0 #164F8C18,0 12px 35px #164F8C30}nav button{color:var(--sub);padding:8px 16px}nav button.on{background:#FFC83D;color:var(--tx)}#sheet{background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 -15px 50px #0E214530}#toast{box-shadow:0 6px 0 #164F8C18,0 12px 35px #164F8C30}.set.done .ck{background:#FF7A1A;border-color:#C85200;color:#0E2145}.ck{box-shadow:0 3px 0 #C7D5E8}.ck:active{transform:translateY(3px)}.set.done{background:#FFF5E8;border-radius:16px}.prog{height:18px;border:2px solid #D1DEEF;background:#EAF1FB}.prog i{background:linear-gradient(90deg,#FFC83D,#FF7A1A)}.gamehero{text-align:center;padding:16px 20px 22px;background:#fff;border-radius:32px;box-shadow:0 6px 0 #00307814,0 14px 30px #0030781f;margin:12px 0 20px}.mascot{display:block;width:170px;height:150px;object-fit:contain;margin:0 auto}.gamehero h2{font-size:28px;font-weight:900;margin:0 0 6px}.gamehero .prog{margin:10px auto;max-width:280px}.artsmall{width:30px;height:30px;object-fit:contain;vertical-align:middle}.gamehero .streak{display:flex;align-items:center;justify-content:center;gap:5px;font-weight:800;color:var(--sub)}.roundhero{display:flex;align-items:center;flex-direction:column;color:#0E2145;margin:14px 0 22px}.roundhero .ring{border-radius:50%;background:#fff;box-shadow:0 6px 0 #00307814,inset 0 -8px 16px #C7D5E860}.roundhero>p{color:#fff;font-size:22px;font-weight:900;text-shadow:0 2px 1px #17477B;margin:14px 0 0}.ex.current{border:3px solid #FFC83D;box-shadow:0 7px 0 #D5A72D,0 16px 32px #0030781f}.ex.current h3{font-size:22px}.achievements{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.badge{background:#F0F5FC;border-radius:20px;padding:12px 5px;text-align:center;overflow-wrap:anywhere}.badge img{width:48px;height:48px;object-fit:contain}.badge.locked img{filter:grayscale(1);opacity:.3}.badge b{display:block;font-size:14px}.badge small{display:block;color:var(--sub);font-size:12px;margin-top:4px}.result{text-align:center}.result .mascot{height:150px}.result h2{font-size:30px!important}.xpburst{position:fixed;left:50%;top:42%;z-index:101;pointer-events:none;background:#FFF4CB;border-radius:99px;padding:9px 16px;color:#0E2145;font-size:28px;font-weight:900;box-shadow:0 5px 0 #E3B54B;animation:coinup .9s ease-out forwards}.xpburst img{width:38px;vertical-align:middle}@keyframes coinup{0%{transform:translate(-50%,20px);opacity:0}25%{opacity:1}100%{transform:translate(-50%,-95px);opacity:0}}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #0E2145;outline-offset:3px}@media(max-width:360px){nav button{padding:8px 13px}.set{gap:5px;grid-template-columns:25px 1fr 1fr 48px}.ck{width:48px}.gamehero{padding:14px}}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 header h1,header .eyebrow,.roundhero>p{background:#195893;border-radius:18px;padding:4px 12px;width:fit-content;text-shadow:none}header .eyebrow{font-size:13px;border-radius:99px}.roundhero>p{text-align:center;font-size:22px;line-height:1.5}.roundhero{gap:4px}.gamehero h2{font-size:25px}.card .note{box-shadow:none}#toast .chipbtn{flex:none}
 
@@ -184,9 +178,8 @@ header .eyebrow{font-size:14px;line-height:1.4;font-weight:800;background:rgba(1
 .exfoot{display:flex;flex-wrap:nowrap;gap:4px;margin-top:16px}.exfoot .chipbtn{font-size:14px;line-height:1.4;font-weight:600;padding:8px 2px;white-space:nowrap;flex:1 1 auto;min-width:max-content;letter-spacing:-.04em}.exfoot .chipbtn:last-child{flex:1 1 auto}.chipbtn{font-size:14px}.badge small{font-size:13px}
 nav{width:calc(100% - 48px);max-width:352px;justify-content:space-between}nav button{flex:1;padding:8px 10px;font-size:13px;white-space:nowrap;line-height:1.4}nav button span{white-space:nowrap}#sheet h2{font-size:21px;line-height:1.35}#sheet .result h2{font-size:34px!important}#sheet .sub{font-size:14px}
 @media(max-width:360px){.card{padding:16px}.ex.current{padding:14px}.ex .row{gap:6px}.ex .th{width:42px;height:42px;flex-basis:42px}.ex .row>.pill{padding:4px 6px}.hero{gap:12px}.hero>.ring{width:88px!important;height:88px!important}.hero>.ring svg{width:88px;height:88px}.exfoot{gap:3px}.exfoot .chipbtn{padding:8px 1px;letter-spacing:-.055em}nav button{padding:8px}.field input{padding-right:25px}}
-#island{white-space:nowrap;max-width:calc(100vw - 24px);top:calc(env(safe-area-inset-top) + 6px)}#island button{white-space:nowrap;flex:none;font-size:14px;padding:8px 12px}#island .t{min-width:62px}
 
-.motion{position:relative;width:100%;aspect-ratio:3/2;border-radius:22px;background:#fff;margin:0 0 16px;overflow:hidden}.motion-frames{position:absolute;inset:0}.motion figure{position:absolute;inset:0;margin:0}.motion figure img{width:100%;height:100%;object-fit:contain}.motion figure:last-child{opacity:0;animation:motionFade 2.1s linear infinite;will-change:opacity}.motion figcaption{display:none}.motion-info{position:absolute;right:10px;top:10px;border:1px solid #DFE7F2;background:#fff;color:#0E2145;border-radius:50%;width:36px;height:36px;font-size:20px;font-weight:800;z-index:2}.muscle-map{position:absolute;right:8px;bottom:8px;width:86px;padding:4px;background:#fff;border:1px solid #DFE7F2;border-radius:14px;color:#0E2145}.muscle-map svg{display:block;width:100%;height:auto}.muscle-map small{display:block;font-size:10px;text-align:center}.motion+ .row{position:relative}@keyframes motionFade{0%,33.333%{opacity:0}50%,83.333%{opacity:1}100%{opacity:0}}#island{position:sticky;top:calc(env(safe-area-inset-top) + 8px);margin:0 auto 12px;left:auto;transform:none;display:none;width:max-content}#island.show{display:flex;transform:none}body:has(#island.show) header{padding-bottom:12px}#island.show{position:fixed;top:calc(env(safe-area-inset-top) + 100px);left:50%;transform:translateX(-50%)}body:has(#island.show) header{margin-bottom:72px}
+.motion{position:relative;width:100%;aspect-ratio:3/2;border-radius:22px;background:#fff;margin:0 0 16px;overflow:hidden}.motion-frames{position:absolute;inset:0}.motion figure{position:absolute;inset:0;margin:0}.motion figure img{width:100%;height:100%;object-fit:contain}.motion figure:last-child{opacity:0;animation:motionFade 2.1s linear infinite;will-change:opacity}.motion figcaption{display:none}.motion-info{position:absolute;right:10px;top:10px;border:1px solid #DFE7F2;background:#fff;color:#0E2145;border-radius:50%;width:36px;height:36px;font-size:20px;font-weight:800;z-index:2}.muscle-map{position:absolute;right:8px;bottom:8px;width:86px;padding:4px;background:#fff;border:1px solid #DFE7F2;border-radius:14px;color:#0E2145}.muscle-map svg{display:block;width:100%;height:auto}.muscle-map small{display:block;font-size:10px;text-align:center}.motion+ .row{position:relative}@keyframes motionFade{0%,33.333%{opacity:0}50%,83.333%{opacity:1}100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.motion-frames{display:flex;position:relative;height:100%}.motion figure,.motion figure:last-child{position:relative;inset:auto;width:50%;opacity:1;animation:none;will-change:auto;display:flex;flex-direction:column}.motion figure img{height:calc(100% - 28px);min-height:0}.motion figcaption{display:block;text-align:center;color:#0E2145;font-size:13px;font-weight:700}.motion .muscle-map{bottom:34px;width:66px}}
 
 /* 베니스 비치의 햇살과 모래, 하늘색 클레이를 함께 담아요. */
@@ -196,8 +189,7 @@ body{background:linear-gradient(180deg,#2B8CFF 0%,#8CC8FF 55%,#FFE3A3 100%) fixe
 .bgfx:before,.bgfx:after{display:block;content:'';position:absolute;top:auto;bottom:0;width:clamp(64px,22vw,130px);height:clamp(100px,32vw,190px);border-radius:0;filter:none;opacity:1;background:url('art/palm.png') center bottom/contain no-repeat}
 .bgfx:before{left:-18px;right:auto;transform:rotate(7deg)}.bgfx:after{right:-18px;left:auto;transform:scaleX(-1) rotate(7deg)}
 header h1,.roundhero>p{background:#236FBD;color:#fff;border-radius:18px;padding:5px 12px;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto}header h1{margin-left:0}header .eyebrow{background:#195893}
-.btn:not(.ghost):not(.danger):not(.sm){background:#111111;color:#FFC72C;box-shadow:0 6px 0 #000;font-weight:900}.btn:not(.ghost):not(.danger):not(.sm):active{box-shadow:0 2px 0 #000;transform:translateY(4px)}
-.btn.sm:not(.ghost),.seg button.on,nav button.on,.pill.ac,.day.next,#island.end{background:#FFC72C;color:#111111}.seg button.on,.btn.sm:not(.ghost){box-shadow:0 4px 0 #AF8213}.day.next small{color:#111111}.pill.v{background:#FF7A1A;color:#111111}
+.btn:not(.ghost):not(.danger):not(.sm){background:#111111;color:#FFC72C;box-shadow:0 6px 0 #000;font-weight:900}.btn:not(.ghost):not(.danger):not(.sm):active{box-shadow:0 2px 0 #000;transform:translateY(4px)}.seg button.on,.btn.sm:not(.ghost){box-shadow:0 4px 0 #AF8213}.day.next small{color:#111111}.pill.v{background:#FF7A1A;color:#111111}
 .pill.ac,.pill.v{font-weight:800}.prog i{background:linear-gradient(90deg,#FFC72C,#FF7A1A)}.set.done .ck{background:#FFC72C;border-color:#AF8213;color:#111111}.set.done{background:#FFF6D9}.ex.current{border-color:#FFC72C;box-shadow:0 7px 0 #AF8213,0 16px 32px #0030781f}.tip.up,.pr b{color:#925000}.pr{background:#FFF6D9}
 .sport,.roundhero .round-label{font-family:'Futura-CondensedExtraBold','Futura','Avenir Next Condensed',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;letter-spacing:.035em}.roundhero .round-label{color:#111111}.gamehero>b.level-badge{display:inline-flex;align-items:center;background:#FFC72C;color:#111111;border-radius:10px;padding:4px 13px;font-size:20px;box-shadow:0 3px 0 #AF8213}
 .gamehero,.result{position:relative;overflow:hidden;padding-top:30px}.gamehero:before,.result:before{content:'';position:absolute;top:0;left:0;right:0;height:18px;background:linear-gradient(to bottom,#FF7A1A 0 6px,#FFC72C 6px 12px,#E63946 12px 18px);pointer-events:none}.result{border-radius:20px;padding:30px 14px 8px}.gamehero .hero-sun{position:absolute;right:12px;top:26px;width:62px;height:62px;object-fit:contain;pointer-events:none}
@@ -208,13 +200,50 @@ header h1,.roundhero>p{background:#236FBD;color:#fff;border-radius:18px;padding:
 .motion{aspect-ratio:3/2}
 .motion-frames{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;right:0!important}
 @media (prefers-reduced-motion: no-preference){.motion .muscle-map{position:absolute;right:8px;bottom:8px;width:84px;height:auto;min-height:0;padding:4px;background:rgba(255,255,255,.92)}.motion .muscle-map svg{height:auto}}
+/* 화면 폭과 휴식 상태는 마지막 규칙에서 함께 관리해요. */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+header,main{width:100%;min-width:0;margin-left:auto;margin-right:auto}
+main{padding-bottom:calc(env(safe-area-inset-bottom) + 220px)}
+.card,.note,.gamehero,.roundhero{max-width:100%;min-width:0;margin-left:auto;margin-right:auto}
+.row>* , .field,.set>* ,.lift>*{min-width:0}
+.set{grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) 54px}
+.stats,.days{min-width:0}.days{grid-template-columns:repeat(4,minmax(0,1fr))}.days.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+img,svg,canvas{max-width:100%}.bgfx{left:0;right:0;max-width:100%;contain:paint;background-size:min(100vw,700px) auto}
+.bgfx:before{left:0;right:auto;transform:none;max-width:28%}.bgfx:after{right:0;left:auto;transform:scaleX(-1);max-width:28%}
+canvas#fx{width:100%;height:100%;left:0;right:0;max-width:100%}
+.motion,.motion-frames,.muscle-map{max-width:100%;min-width:0}.gamehero:before,.result:before{max-width:100%}
+.ex .row>.pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}.row{flex-wrap:wrap}.hero{max-width:100%}.hero>div:last-child{overflow-wrap:anywhere}
+nav{max-width:calc(100% - 24px);width:360px}nav button{flex:1;min-width:0;padding:8px 6px}
+.roundhero{margin:8px auto 12px;gap:6px;text-align:center}.roundhero .ring{width:140px;height:140px;max-width:100%;flex:none}
+.roundhero .ring:before{inset:10px}.roundhero .ring .c{inset:15px}.roundhero .round-label{font-family:inherit;font-style:normal;font-size:14px;letter-spacing:0;text-transform:none}.roundhero .round-number{font-size:38px}.roundhero .round-count{font-size:12px;max-width:105px;line-height:1.35}
+.roundhero>p{font-size:18px;line-height:1.4;margin:4px auto;padding:4px 10px;overflow-wrap:anywhere}
+.roundhero .resting:before{background:#FFF9E9}.roundhero .rest-ended:before{background:#FFC72C}.roundhero .rest-ended #roundProgress{stroke:#AF8213!important}
+.roundhero .resting #roundProgress{stroke:#FFC72C!important;transition:stroke-dashoffset .25s linear}
+.rest-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;max-width:100%;padding-bottom:4px}.rest-actions[hidden]{display:none}
+.rest-actions .btn.sm{font-size:14px;padding:10px 12px}.rest-hint{font-size:13px;line-height:1.5;color:#fff;background:#195893;border-radius:12px;padding:6px 10px;max-width:340px;text-wrap:balance}
+#restDock{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 94px);width:calc(100% - 24px);max-width:410px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:#fff;border:2px solid #FFC72C;border-radius:99px;box-shadow:0 4px 12px #00307826;z-index:21;font-size:14px;font-weight:800;min-height:56px}
+#restDock[hidden]{display:none}#dockTime{min-width:0;font-variant-numeric:tabular-nums}#restDock button{border:0;border-radius:99px;background:#FFC72C;color:#111;padding:9px 10px;font:inherit;font-size:13px;flex:none}
+body.rest-dock-visible #toast{bottom:calc(env(safe-area-inset-bottom) + 162px)}
+@media(max-width:360px){.set{grid-template-columns:25px minmax(0,1fr) minmax(0,1fr) 48px;gap:5px}.hero{gap:10px}.card{padding:16px}}
+
+/* 캘리포니아 해변 짐 배경 (11/23) */
+html{background:#2a63c4}
+body{background:#2a63c4!important}
+.bgfx{position:fixed!important;inset:0!important;z-index:0!important;opacity:1!important;background:url('art/bg.jpg') center bottom / cover no-repeat!important;overflow:hidden}
+.bgfx:before,.bgfx:after{display:none!important}
+.hero-sun{display:none}
+
+/* 기본 동작을 하나로 줄인 화면 */
+:root{--tx:#111111;--sub:#4A4A4A;--bad:#A32323}
+.simple-home{text-align:center}.gym-logo{display:block;width:220px;max-width:80%;height:auto;margin:0 auto 12px}.simple-home h2{font-size:24px;color:#111;background:#FFF9E9;border-radius:16px;padding:12px;margin:8px 0 16px}.btn.primary{background:#111!important;color:#FFC72C!important;min-height:68px;border:2px solid #FFC72C;font-size:24px;font-weight:900;box-shadow:none;width:100%}.text-link{border:0;background:#FFF9E9;color:#333;font:inherit;text-decoration:underline;padding:12px 20px;margin:8px auto;border-radius:14px}.growth-line{font-size:13px;color:#333;background:#FFF9E9;border-radius:14px;padding:10px}.focus-card{background:#FFF9E9;color:#111;padding:16px;border:1px solid #D5C7A6;border-radius:24px}.focus-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.progress-dots{display:flex;flex-wrap:wrap;gap:8px}.progress-dots span{width:10px;height:10px;border:2px solid #555;border-radius:50%;background:#FFF9E9}.progress-dots .now{width:24px;border-radius:8px;background:#111}.progress-dots .done{background:#665018}.progress-dots .skipped{border-style:dashed}.more-button{font-size:24px;min-width:48px;min-height:48px;border:1px solid #555;border-radius:16px;background:#fff;color:#111}.focus-card h2{font-size:27px;margin:16px 0 6px}.set-count{font-size:18px;margin:0 0 14px;color:#4A4A4A}.focus-card .motion{margin-bottom:12px}.focus-field{margin:10px 0 16px}.focus-field label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;color:#444}.stepper{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid #AAA;border-radius:18px;background:#fff;padding:6px}.stepper button{width:56px;min-height:56px;font-size:30px;font-weight:800;background:#111;color:#FFC72C;border:0;border-radius:12px}.stepper>div{display:flex;align-items:center;justify-content:center;min-width:0;flex:1}.stepper input{font-size:30px;font-weight:800;min-width:0;width:100%;max-width:110px;text-align:center;border:0;background:#fff;color:#111;padding:6px 0}.stepper span{font-size:16px;color:#444}.bodyweight{text-align:center;font-size:24px;font-weight:800;margin:14px}.focus-card .roundhero{background:#FFF9E9;color:#111;padding:24px 0;box-shadow:none}.focus-card .rest-actions{display:grid;width:100%;gap:12px}.focus-card .ring{margin:20px auto 28px}.focus-card .round-number{font-size:38px!important;color:#111}.focus-card .round-label,.focus-card .round-count{color:#333!important}.focus-card .rest-hint{background:#FFF9E9;color:#444}.ready-notice{background:#111;color:#FFC72C;padding:10px;border-radius:12px}.menu-item{display:block;width:100%;background:#fff;color:#111;border:1px solid #AAA;border-radius:14px;min-height:52px;font:inherit;text-align:left;padding:12px;margin:8px 0}.guide{text-align:center}.guide img,.finish-mascot{display:block;width:150px;height:150px;object-fit:contain;margin:10px auto}.guide h2{font-size:24px;line-height:1.5}.focus-card .btn.ghost{background:#fff!important;color:#111!important;border-color:#555}.simple-home .sub{color:#444}
+
 </style>
 </head>
 <body>
 <div class="bgfx"></div>
 <header><div class="eyebrow" id="eye"></div><h1 id="ttl">오늘</h1></header>
 <main id="view"></main>
-<div id="island"><svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="4"/><circle id="iring" cx="17" cy="17" r="14" fill="none" style="stroke:var(--ac)" stroke-width="4" stroke-linecap="round" stroke-dasharray="88" stroke-dashoffset="0"/></svg><span class="t" id="tt">0:00</span><button data-act="t30">+30초</button><button data-act="tclose">닫기</button></div>
+<div id="restDock" hidden aria-label="쉬는 시간"><span id="dockTime">쉬는 시간</span><button data-act="tclose">바로 다음 세트</button></div>
 <div id="ov" data-act="close"></div>
 <div id="sheet"></div>
 <canvas id="fx"></canvas>
@@ -242,7 +271,8 @@ const DAYS={
 };
 const PLANS={4:['하체A','상체A','하체B','상체B'],3:['전신A','전신B','전신C']};
 const START_W={'벤치프레스':40,'스쿼트':20,'루마니안 데드':25,'데드리프트':30};
-const REST={bb:150,db:75,mc:75,bw:90,sec:60};
+const REST={bb:150,db:75,mc:75,bw:75,sec:75};
+const REST_GUIDE='무거운 바벨 운동은 2분 30초, 나머지는 1분 15초 쉬어요';
 const FOOD=['3끼 + 프로틴 2스쿱(물)','프로틴 한 번은 우유 400ml에 타 마셔요','우유 + 저녁 밥 2/3공기'];
 function guessType(n){if(/바벨|스미스|트랩바/.test(n))return'bb';if(/덤벨|고블릿|스텝업|런지/.test(n))return'db';if(/어시스트|풀업|딥스|백 익스텐션|맨몸|밴드/.test(n))return'bw';if(/플랭크/.test(n))return'sec';return'mc'}
 function typeOf(n){const e=EXDB[n];return e?(e.sec?'sec':e.eq==='cable'?'mc':['band','ball'].includes(e.eq)?'bw':e.eq):guessType(n)}
@@ -252,7 +282,7 @@ const ICON_CK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 
 // ===== 저장 =====
 const KEY='workout_v1';
-const DEF={plan:4,start:'2026-11-23',goal:68,short:false,light:false,logs:[],wt:{},waist:{},chk:{},food:0,draft:null,tab:'today',repl:{},hideA2HS:false};
+const DEF={plan:4,start:'2026-11-23',goal:68,short:false,light:false,logs:[],wt:{},waist:{},chk:{},food:0,draft:null,tab:'today',repl:{},hideA2HS:false,seenGuide:false};
 const isD=k=>typeof k==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(k),num=v=>typeof v==='number'&&isFinite(v),str=v=>typeof v==='string'&&v.length>0&&v.length<=40;
 const TYPES=['bb','db','mc','bw','sec'];
 function cleanEx(e){return{n:e.n,base:str(e.base)?e.base:e.n,t:TYPES.includes(e.t)?e.t:guessType(e.n),planned:Number.isInteger(e.planned)?e.planned:0,hard:!!e.hard,sets:Array.isArray(e.sets)?e.sets.filter(t=>t&&typeof t==='object').map(t=>({w:num(t.w)?t.w:'',r:num(t.r)?t.r:0})):[]}}
@@ -260,7 +290,7 @@ function cleanSwapInputs(raw){const out=Object.create(null);if(!raw||typeof raw!
 function clean(x){
  const o=Object.assign({},DEF,{logs:[],wt:{},waist:{},chk:{},draft:null,repl:{}});if(!x||typeof x!=='object')return o;
  if(x.repl&&typeof x.repl==='object'&&!Array.isArray(x.repl))for(const [k,v] of Object.entries(x.repl))if(str(k)&&str(v)&&k!==v&&!['__proto__','constructor','prototype'].includes(k))Object.defineProperty(o.repl,k,{value:v,writable:true,enumerable:true,configurable:true});
- o.hideA2HS=x.hideA2HS===true;
+ o.hideA2HS=x.hideA2HS===true;o.seenGuide=x.seenGuide===true;
  // 예전 색 설정은 읽지 않아요.
  if(x.plan===3||x.plan===4)o.plan=x.plan;
  if(isD(x.start))o.start=x.start;
@@ -273,7 +303,7 @@ function clean(x){
  if(x.chk&&typeof x.chk==='object')for(const [d,v] of Object.entries(x.chk))if(isD(d)&&v&&typeof v==='object'){o.chk[d]={};for(const [k,b] of Object.entries(v))if(/^[a-z0-9]+$/.test(k))o.chk[d][k]=!!b}
  if(Array.isArray(x.logs))o.logs=x.logs.filter(l=>l&&DAYS[l.day]&&isD(l.date)&&Array.isArray(l.ex)).map(l=>({ts:num(l.ts)?l.ts:Date.parse(l.date),date:l.date,day:l.day,short:!!l.short,light:!!l.light,week:Number.isInteger(l.week)?l.week:0,dur:num(l.dur)?l.dur:0,ex:l.ex.filter(e=>e&&str(e.n)).map(cleanEx)}));
  let dr=x.draft;try{
- if(dr&&DAYS[dr.day]&&isD(dr.date)&&Array.isArray(dr.ex)&&dr.ex.every(e=>e&&str(e.n)&&Array.isArray(e.sets)))o.draft={swapInputs:cleanSwapInputs(dr.swapInputs),day:dr.day,date:dr.date,startTs:num(dr.startTs)?dr.startTs:Date.now(),short:!!dr.short,light:!!dr.light,week:Number.isInteger(dr.week)?dr.week:0,ex:dr.ex.map(e=>({n:e.n,base:str(e.base)?e.base:e.n,t:TYPES.includes(e.t)?e.t:guessType(e.n),hard:!!e.hard,sets:e.sets.filter(t=>t&&typeof t==='object').map(t=>({w:String(t.w??'').replace(/[^0-9.]/g,''),r:String(t.r??'').replace(/[^0-9]/g,''),done:!!t.done&&+t.r>0,awarded:!!t.awarded||!!t.done,opt:!!t.opt}))}))};}catch(err){o.draft=null}
+ if(dr&&DAYS[dr.day]&&isD(dr.date)&&Array.isArray(dr.ex)&&dr.ex.every(e=>e&&str(e.n)&&Array.isArray(e.sets)))o.draft={restEndTs:num(dr.restEndTs)&&dr.restEndTs>0?dr.restEndTs:0,restDuration:num(dr.restDuration)&&dr.restDuration>0?dr.restDuration:75,restFocus:dr.restFocus&&Number.isInteger(dr.restFocus.ei)&&Number.isInteger(dr.restFocus.si)?{ei:dr.restFocus.ei,si:dr.restFocus.si}:null,swapInputs:cleanSwapInputs(dr.swapInputs),day:dr.day,date:dr.date,startTs:num(dr.startTs)?dr.startTs:Date.now(),short:!!dr.short,light:!!dr.light,week:Number.isInteger(dr.week)?dr.week:0,ex:dr.ex.map(e=>({n:e.n,base:str(e.base)?e.base:e.n,t:TYPES.includes(e.t)?e.t:guessType(e.n),hard:!!e.hard,skipped:e.skipped===true,sets:e.sets.filter(t=>t&&typeof t==='object').map(t=>({w:String(t.w??'').replace(/[^0-9.]/g,''),r:String(t.r??'').replace(/[^0-9]/g,''),done:!!t.done&&+t.r>0,awarded:!!t.awarded||!!t.done,opt:!!t.opt}))}))};}catch(err){o.draft=null}
  {const seen=new Set();for(const l of o.logs){while(seen.has(l.ts))l.ts+=1;seen.add(l.ts)}}
  if(['today','weight','log','routine'].includes(x.tab))o.tab=x.tab;else if(x.tab==='guide')o.tab='routine';
  return o;
@@ -331,10 +361,11 @@ function badgeCard(){return '<div class="card"><div class="h">차곡차곡 모�
 
 // ===== 운동 진행 =====
 function startDraft(day){
+ tableMode=false;activeExercise=null;readyNotice=false;
  const w=wkOf(today());
  const list=DAYS[day].filter((_,i)=>!D.short||i<4);
  D.draft={day,date:today(),startTs:Date.now(),short:D.short,light:D.light,week:w,ex:list.map(def=>{const name=curName(def.n),ex=adj(def,name,name===def.n?def.t:typeOf(name));const s=suggest(ex);const n=setCount(ex,D.light,w);const sets=[];
-  for(let i=0;i<n;i++)sets.push({w:String(s.w),r:'',done:false,opt:!!(rule(w).opt&&!D.light&&i===2&&ex.s>=3)});
+  for(let i=0;i<n;i++)sets.push({w:String(s.w===''?0:s.w),r:String(ex.hi),done:false,opt:!!(rule(w).opt&&!D.light&&i===2&&ex.s>=3)});
   return{n:ex.n,base:def.n,t:ex.t,sets,hard:false}})};
  save();render(true);scrollTo(0,0);
 }
@@ -351,22 +382,66 @@ function finish(){
 }
 
 // ===== 휴식 타이머 =====
-let tEnd=0,tLen=1,tInt=null;
-function startTimer(sec){tEnd=Date.now()+sec*1000;tLen=sec;$('#island').classList.add('show');$('#island').classList.remove('end');if(!tInt)tInt=setInterval(tick,250);tick()}
-function stopTimer(){$('#island').classList.remove('show')}
+let tEnd=0,tLen=1,restObserver=null,roundVisible=true,notifiedEnd=0;
+function restoreTimer(){
+ tEnd=D.draft?.restEndTs||0;tLen=D.draft?.restDuration||75;
+}
+function startTimer(sec){
+ if(!D.draft)return;
+ const oldEnd=D.draft.restEndTs,oldDuration=D.draft.restDuration;
+ D.draft.restEndTs=Date.now()+sec*1000;D.draft.restDuration=sec;
+ if(!save()){D.draft.restEndTs=oldEnd;D.draft.restDuration=oldDuration;return}
+ restoreTimer();notifiedEnd=0;tick();
+}
+function extendTimer(){
+ if(!D.draft||!tEnd)return;
+ const oldEnd=D.draft.restEndTs,oldDuration=D.draft.restDuration;
+ D.draft.restEndTs=Math.max(tEnd,Date.now())+30000;
+ D.draft.restDuration=Math.max(tLen,Math.ceil((D.draft.restEndTs-Date.now())/1000));
+ if(!save()){D.draft.restEndTs=oldEnd;D.draft.restDuration=oldDuration;return}
+ restoreTimer();notifiedEnd=0;tick();
+}
+function stopTimer(){
+ if(D.draft){const end=D.draft.restEndTs,len=D.draft.restDuration;D.draft.restEndTs=0;D.draft.restDuration=0;if(!save()){D.draft.restEndTs=end;D.draft.restDuration=len;return}}
+ tEnd=0;tLen=1;notifiedEnd=0;tick();
+}
+function observeRound(){
+ if(restObserver)restObserver.disconnect();
+ const target=$('#roundTimer');roundVisible=true;
+ if(target&&typeof IntersectionObserver!=='undefined'){
+  restObserver=new IntersectionObserver(entries=>{roundVisible=entries[0].isIntersecting;tick()},{threshold:0,rootMargin:'0px 0px -170px 0px'});
+  restObserver.observe(target);
+ }
+ tick();
+}
 function tick(){
- const el=$('#el');if(el&&D.draft){const m=Math.floor((Date.now()-D.draft.startTs)/60000);el.textContent=m+'분째'}
- if(!$('#island').classList.contains('show'))return;
- const r=Math.max(0,Math.round((tEnd-Date.now())/1000));
- $('#iring').style.strokeDashoffset=String(88*(1-r/tLen));
- if(r<=0){$('#tt').textContent='다음 세트';if(!$('#island').classList.contains('end')){$('#island').classList.add('end');navigator.vibrate&&navigator.vibrate(300)}return}
- $('#tt').textContent=Math.floor(r/60)+':'+pad(r%60)}
-setInterval(tick,1000);
+ if(D.draft&&tEnd&&Date.now()>=tEnd&&D.tab==='today'&&!tableMode){stopTimer();readyNotice=true;render();return}
+ const el=$('#el');if(el&&D.draft)el.textContent='운동을 시작한 지 '+Math.floor((Date.now()-D.draft.startTs)/60000)+'분째예요';
+ const active=!!(D.draft&&tEnd),r=active?Math.max(0,Math.ceil((tEnd-Date.now())/1000)):0;
+ const text=Math.floor(r/60)+':'+pad(r%60),ended=active&&r===0,round=$('#roundTimer');
+ if(round){
+  round.classList.toggle('resting',active);round.classList.toggle('rest-ended',ended);
+  $('#roundLabel').textContent=active?'쉬는 시간':'라운드';
+  $('#roundNumber').textContent=active?text:round.dataset.round;
+  $('#roundCount').textContent=ended?'다음 세트 시작해요':active?(tableMode?'편하게 숨을 골라요':''):round.dataset.count;
+  const progress=$('#roundProgress');
+  progress.style.strokeDashoffset=String(Number(progress.dataset.c)*(1-(active?Math.min(1,r/tLen):Number(progress.dataset.progress))));
+  $('#restActions').hidden=!active;
+  $('#restHint').textContent=active?(tableMode?REST_GUIDE:'시간이 끝나면 다음 세트를 보여드려요'):'세트 완료를 누르면 쉬는 시간이 시작돼요';
+ }
+ const dock=$('#restDock'),show=active&&!roundVisible&&!!round&&D.tab==='today';
+ dock.hidden=!show;$('#dockTime').textContent=ended?'다음 세트 시작해요':'쉬는 시간 '+text;
+ document.body.classList.toggle('rest-dock-visible',show);
+ if(ended&&notifiedEnd!==tEnd){notifiedEnd=tEnd;try{navigator.vibrate?.(300)}catch(err){}}
+}
+setInterval(tick,250);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){restoreTimer();tick()}});
+addEventListener('pageshow',()=>{restoreTimer();tick()});
 
 // ===== 그림 =====
-function ring(v,max,size,sw,label,sub){const round=String(label).startsWith('ROUND ');if(round){size=160;sw=7}const r=(size-sw)/2,c=2*Math.PI*r,p=Math.max(0,Math.min(1,max?v/max:0));
- const content=round?`<span class="round-label">ROUND</span><b class="round-number">${String(label).replace('ROUND ','')}</b><span class="round-count">${sub}</span>`:`<b>${label}</b>${sub?`<span>${sub}</span>`:''}`;
- return `<div class="ring" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" style="stroke:${round?'rgba(255,255,255,.32)':'#E3EEFF'}" stroke-width="${sw}"/><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" style="stroke:${round?'#fff':'#FF7A1A'}" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p)}"/></svg><div class="c">${content}</div></div>`}
+function ring(v,max,size,sw,label,sub){const round=String(label).startsWith('ROUND ');if(round){size=140;sw=7}const r=(size-sw)/2,c=2*Math.PI*r,p=Math.max(0,Math.min(1,max?v/max:0));
+ const content=round?`<span class="round-label" id="roundLabel">라운드</span><b class="round-number" id="roundNumber">${String(label).replace('ROUND ','')}</b><span class="round-count" id="roundCount" role="status" aria-live="polite">${sub}</span>`:`<b>${label}</b>${sub?`<span>${sub}</span>`:''}`;
+ return `<div class="ring" ${round?`id="roundTimer" data-round="${String(label).replace('ROUND ','')}" data-count="${sub}"`:""} style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" style="stroke:${round?'rgba(255,255,255,.32)':'#E3EEFF'}" stroke-width="${sw}"/><circle ${round?`id="roundProgress" data-c="${c}" data-progress="${p}"`:""} cx="${size/2}" cy="${size/2}" r="${r}" fill="none" style="stroke:${round?'#fff':'#FF7A1A'}" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p)}"/></svg><div class="c">${content}</div></div>`}
 
 function spark(vals,w,h){if(vals.length<2)return'<span class="sub">두 번 기록하면 보여요</span>';const mn=Math.min(...vals),mx=Math.max(...vals),rg=mx-mn||1;
  const pts=vals.map((v,i)=>[i/(vals.length-1)*w,h-4-(v-mn)/rg*(h-8)]);const p=pts.map(q=>q.map(n=>n.toFixed(1)).join(',')).join(' ');
@@ -395,8 +470,9 @@ function render(anim){
  const n=new Date();$('#eye').textContent=(n.getMonth()+1)+'월 '+n.getDate()+'일 '+WD[n.getDay()]+'요일';
  $('#ttl').textContent={today:D.draft?D.draft.day:'오늘',weight:'체중',log:'기록',routine:'루틴'}[D.tab];
  V.innerHTML=({today:vToday,weight:vWeight,log:vLog,routine:vRoutine}[D.tab])();
+ restoreTimer();observeRound();
 }
-function vToday(){
+function vTodayLegacy(){
  const t=today(),w=wkOf(t),r=rule(w);let h='';
  if(D.draft)return h+vDraft();
  h+=gameHero()+`<button class="btn" data-act="start" data-v="${nextDay()}">${nextDay()} 시작하기</button>`;
@@ -423,9 +499,9 @@ function vDaily(t){
  return `<div class="card"><div class="row" style="margin-bottom:6px"><div class="h" style="margin:0">오늘 할 일</div><span class="pill ${done===items.length?'ac':''}">${done}/${items.length}</span></div>${items.map(([k,x])=>`<label class="chk"><input type="checkbox" data-act="chk" data-v="${k}" ${c[k]?'checked':''}><span>${x}</span></label>`).join('')}</div>`;
 }
 let activeExercise=null;
-function vDraft(){
+function vDraftLegacy(){
  const d=D.draft,r=rule(d.week);const all=d.ex.flatMap(e=>e.sets),dn=all.filter(s=>s.done).length;
- const automatic=d.ex.findIndex(e=>e.sets.some(s=>!s.done)),current=Number.isInteger(activeExercise)&&d.ex[activeExercise]?activeExercise:automatic;let h=`<div class="roundhero">${ring(dn,all.length,140,9,'ROUND '+Math.min(dn+1,all.length),Math.min(dn+1,all.length)+'번째 세트')}<p>지금은 ${esc(d.ex[current<0?d.ex.length-1:current]?.n||'마무리')} 차례예요</p><span class="sub" style="background:#fff;border-radius:99px;padding:5px 12px" id="el">${Math.floor((Date.now()-d.startTs)/60000)}분째</span></div>`;
+ const automatic=d.ex.findIndex(e=>e.sets.some(s=>!s.done)),current=Number.isInteger(activeExercise)&&d.ex[activeExercise]?activeExercise:automatic;let h=`<div class="roundhero">${ring(dn,all.length,140,9,'ROUND '+Math.min(dn+1,all.length),Math.min(dn+1,all.length)+'번째 세트')}<div class="rest-actions" id="restActions" hidden><button class="btn sm ghost" data-act="t30">30초 더 쉬기</button><button class="btn sm" data-act="tclose">바로 다음 세트</button></div><small class="rest-hint" id="restHint">세트 완료를 누르면 쉬는 시간이 시작돼요</small><p>지금은 ${esc(d.ex[current<0?d.ex.length-1:current]?.n||'마무리')} 차례예요</p><span class="sub" style="background:#fff;border-radius:99px;padding:5px 12px" id="el">${Math.floor((Date.now()-d.startTs)/60000)}분째</span></div>`;
  d.ex.forEach((e,ei)=>{const ex=exOf(e,d.day),s=suggest(ex),unit=ex.t==='sec'?'초':'회',alld=e.sets.length&&e.sets.every(x=>x.done);
   const w0=e.sets[0]?e.sets[0].w:'';
   h+=`<div class="card ex ${ei===current?'current':''} ${alld?'alldone':''}" data-act="selectex" data-e="${ei}">${ei===current?motion(e.n,ei):''}<div class="row">${ei===current?'':`<button class="imgbtn" data-act="info" data-e="${ei}" aria-label="${esc(e.n)} 운동 정보">${thumb(e.n)||'<span class="chipbtn">정보</span>'}</button>`}<h3><span class="idx">${ei<4?ei+1:'+'}</span>${esc(e.n)}</h3><span class="pill">${e.sets.length}세트, ${ex.lo===ex.hi?ex.lo:ex.lo+'~'+ex.hi}${unit}씩</span></div>
@@ -476,8 +552,8 @@ function vLog(){
  h+=badgeCard();
  return h;
 }
-function vRoutine(){return routineCard()+`<div class="card"><div class="h">가이드</div>
-<details><summary>헬스장에서는 이렇게 해요</summary><ul><li>자전거를 5분 타며 몸을 풀어요.</li><li>바벨 운동 전에는 가벼운 무게로 2세트 준비해요.</li><li>스쿼트는 맨몸 10회, 빈 봉 5회로 시작해요.</li><li>스쿼트 안전바는 가장 깊이 앉았을 때 봉보다 조금 낮게 맞춰요.</li><li>벤치프레스도 안전바를 먼저 확인해요.</li><li>세트를 완료하면 휴식 타이머가 시작돼요.</li><li>바벨은 2분 30초, 맨몸은 1분 30초, 나머지는 1분 15초 쉬어요.</li><li>운동 뒤에는 말할 수 있을 정도의 빠르기로 20분 걸어요.</li><li>마지막으로 5분 동안 스트레칭해요.</li></ul></details>
+function vRoutine(){return '<div class="card"><button class="btn" data-act="guide">사용법 다시 보기</button><details><summary>경험치 얻는 법</summary><p>세트를 마치면 10, 운동을 저장하면 50, 새 기록이면 100을 받아요.</p></details></div>'+routineCard()+`<div class="card"><div class="h">가이드</div>
+<details><summary>헬스장에서는 이렇게 해요</summary><ul><li>자전거를 5분 타며 몸을 풀어요.</li><li>바벨 운동 전에는 가벼운 무게로 2세트 준비해요.</li><li>스쿼트는 맨몸 10회, 빈 봉 5회로 시작해요.</li><li>스쿼트 안전바는 가장 깊이 앉았을 때 봉보다 조금 낮게 맞춰요.</li><li>벤치프레스도 안전바를 먼저 확인해요.</li><li>세트를 완료하면 휴식 타이머가 시작돼요.</li><li>${REST_GUIDE}</li><li>운동 뒤에는 말할 수 있을 정도의 빠르기로 20분 걸어요.</li><li>마지막으로 5분 동안 스트레칭해요.</li></ul></details>
 <details><summary>주 4일 / 주 3일 고르기</summary><ul><li>주 4일은 월요일 하체A, 화요일 상체A, 목요일 하체B, 금요일 상체B를 해요.</li><li>주 3일은 월요일 전신A, 수요일 전신B, 금요일 전신C를 해요.</li><li>하루 빠져도 다음 차례부터 이어서 할 수 있어요.</li><li>전신 운동 사이에는 하루 쉬어요.</li><li>시간이 짧으면 오늘은 1시간만 해요를 켜요.</li></ul></details>
 <details><summary>다시 시작한 첫 4주를 함께해요</summary><ul><li>첫 주에는 2세트씩 하며 4회 더 할 힘을 남겨요.</li><li>2주차에는 2~3세트씩 하며 3회 더 할 힘을 남겨요.</li><li>3~4주차에는 3세트씩 하며 2회 더 할 힘을 남겨요.</li><li>5주차부터는 3세트씩 하며 1~2회 더 할 힘을 남겨요.</li><li>다음 운동까지 근육통이 남으면 세트 수를 유지해요.</li><li>4회 더 할 힘은 세트를 마친 뒤 4회쯤 더 할 수 있을 것 같은 여유를 말해요.</li></ul></details>
 <details><summary>무게 올리기 (앱이 자동 제안)</summary><ul><li>모든 세트에서 목표 횟수를 채우고 자세가 편안하면 무게를 조금 올려봐요.</li><li>바벨은 2.5kg, 덤벨은 한 손에 1~2kg, 머신은 한 칸씩 올려봐요.</li><li>힘들었어요를 누르면 다음에도 같은 무게를 추천해요</li><li>무게를 올린 뒤 목표 횟수를 채우기 어렵다면 이전 무게로 돌아가요.</li><li>6~8주 운동했거나 두 번 연속 기록이 같다면 세트 수를 줄여 쉬어 가요.</li><li>실제로 한 횟수나 시간을 적은 뒤 완료를 눌러요. 0회와 0초는 완료로 기록하지 않아요.</li></ul></details>
@@ -522,19 +598,58 @@ function drawSwap(){const s=SH,current=s.mode==='routine'?curName(s.base):D.draf
 function doSwap(name){name=String(name).trim().slice(0,30);if(!name||!SH||SH.kind!=='swap')return;const sh={...SH};if(sh.mode==='routine'){if(!setRepl(sh.base,name))return;closeSheet();render();return}const before=JSON.parse(JSON.stringify(D.draft)),oldRepl={...D.repl},d=D.draft,e=d.ex[sh.ei];if(!e.sets.some(x=>!x.done)){alert('이 종목은 모두 마쳤어요. 다음 운동부터 바꿀 수 있어요.');return}const t=name===e.base?defOf(d.day,e.base).t:typeOf(name),ex=adj(defOf(d.day,e.base),name,t),s=suggest(ex),done=e.sets.filter(x=>x.done),left=e.sets.filter(x=>!x.done);d.swapInputs=d.swapInputs||Object.create(null);if(!Object.hasOwn(d.swapInputs,e.base))Object.defineProperty(d.swapInputs,e.base,{value:Object.create(null),enumerable:true,writable:true,configurable:true});const cache=d.swapInputs[e.base];Object.defineProperty(cache,e.n,{value:left.map(x=>({...x})),enumerable:true,writable:true,configurable:true});const restored=Object.hasOwn(cache,name)?cache[name]:null;const sets=left.map((x,i)=>restored?.[i]?{...restored[i],done:false}:{...x,w:String(s.w),r:String(ex.hi),done:false});const base=e.base;d.ex.splice(sh.ei,1,...(done.length?[{...e,sets:done}]:[]));const target=d.ex.find(x=>x.n===name);if(target){target.sets.push(...sets)}else d.ex.splice(Math.min(sh.ei+(done.length?1:0),d.ex.length),0,{n:name,base,t,hard:false,sets});mergeDraft(d);const ok=sh.scope==='keep'?setRepl(sh.base,name):save();if(!ok){D.draft=before;D.repl=oldRepl;return}closeSheet();render()}
 function mergeDraft(d){const seen=new Map();d.ex=d.ex.filter(e=>{if(!seen.has(e.n)){seen.set(e.n,e);return true}const target=seen.get(e.n);target.sets.push(...e.sets);target.hard=target.hard||e.hard;return false});return d}
 
+
+// 한 세트 집중 모드. 이전 표 화면은 vDraftLegacy로 보존해요.
+let chosenDay='',settingsOpen=false,tableMode=false,guidePage=0,readyNotice=false;
+function gymLogo(){return "<svg class=\"gym-logo\" viewBox=\"0 0 512 400\" role=\"img\" aria-label=\"WOO'S GYM, SINCE 2026\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"256\" cy=\"200\" rx=\"245\" ry=\"187\" fill=\"#111111\" stroke=\"#FFC72C\" stroke-width=\"6\"/><ellipse cx=\"256\" cy=\"200\" rx=\"232\" ry=\"174\" fill=\"none\" stroke=\"#FFC72C\" stroke-width=\"2\"/><text x=\"256\" y=\"112\" text-anchor=\"middle\" fill=\"#FFC72C\" font-family=\"Futura-CondensedExtraBold,Arial Narrow,sans-serif\" font-weight=\"900\" font-style=\"italic\" font-size=\"44\" textLength=\"270\" lengthAdjust=\"spacingAndGlyphs\">WOO'S GYM</text><image href=\"art/mascotgold.png\" x=\"152\" y=\"115\" width=\"208\" height=\"200\" preserveAspectRatio=\"xMidYMid meet\"/><text x=\"256\" y=\"350\" text-anchor=\"middle\" fill=\"#FFC72C\" font-family=\"sans-serif\" font-weight=\"800\" font-size=\"23\" letter-spacing=\"6\">SINCE 2026</text></svg>"}
+function vToday(){
+ if(D.draft)return vDraft();
+ const day=PLANS[D.plan].includes(chosenDay)?chosenDay:nextDay(),g=gameStats(),wc=weekCount(monday(today()));
+ return '<section class="simple-home">'+gymLogo()+'<h2>오늘은 '+esc(day)+' 차례예요</h2><button class="btn primary" data-act="start" data-v="'+esc(day)+'">운동 시작</button><button class="text-link" data-act="todaysettings" aria-expanded="'+settingsOpen+'">오늘 운동 바꾸기</button>'+
+ (settingsOpen?'<div class="card"><h3>오늘 운동을 골라요</h3><div class="seg">'+[4,3].map(n=>'<button data-act="plan" data-v="'+n+'" class="'+(D.plan===n?'on':'')+'">주 '+n+'일</button>').join('')+'</div><div class="days">'+PLANS[D.plan].map(n=>'<button class="day '+(day===n?'next':'')+'" data-act="pickday" data-v="'+esc(n)+'">'+esc(n)+'</button>').join('')+'</div><label class="toggle">1시간만<input type="checkbox" class="sw" data-act="short" '+(D.short?'checked':'')+'></label><label class="toggle">쉬어 가는 주<input type="checkbox" class="sw" data-act="light" '+(D.light?'checked':'')+'></label></div>':'')+
+ '<p class="growth-line">LEVEL '+g.level+', 경험치 '+g.current+'/'+g.need+', '+(streak()?streak()+'주 연속':'이번 주부터 시작해요')+'</p></section><div class="card"><div class="hero">'+ring(wc,D.plan,104,11,wc+'/'+D.plan,'이번 주')+'<div><h3>이번 주 '+wc+'번 했어요</h3><p class="sub">한 번에 한 세트씩 해요</p></div></div></div>'+vDaily(today());
+}
+function focusPosition(d=D.draft,includeRest=true){if(!d)return null;if(includeRest&&d.restEndTs){const f=d.restFocus,e=f&&d.ex[f.ei],s=e?.sets[f.si];if(s?.done)return{ei:f.ei,si:f.si,e,s};for(let ei=d.ex.length-1;ei>=0;ei--){const si=d.ex[ei].sets.findLastIndex(s=>s.done);if(si>=0)return{ei,si,e:d.ex[ei],s:d.ex[ei].sets[si]}}}for(let ei=0;ei<d.ex.length;ei++){if(d.ex[ei].skipped)continue;const si=d.ex[ei].sets.findIndex(s=>!s.done);if(si>=0)return{ei,si,e:d.ex[ei],s:d.ex[ei].sets[si]}}return null}
+function weightStep(type){return type==='bb'||type==='bw'?2.5:type==='db'?1:5}
+function fillFocus(p){if(!p)return;const ex=exOf(p.e,D.draft.day);if(p.s.w==='')p.s.w=String(suggest(ex).w||0);if(p.s.r==='')p.s.r=String(ex.hi)}
+function changeFocus(field,dir){const p=focusPosition();if(!p||D.draft.restEndTs)return false;fillFocus(p);const step=field==='w'?weightStep(p.e.t):1;p.s[field]=String(Math.max(field==='w'?0:1,Math.round(((+p.s[field]||0)+dir*step)*100)/100));return save()}
+function completeFocus(){const d=D.draft,p=focusPosition();if(!p||d.restEndTs)return false;const before={...p.s},end=d.restEndTs,len=d.restDuration,restFocus=d.restFocus,first=!p.s.awarded;fillFocus(p);if(!(Number(p.s.r)>0)){alert(p.e.t==='sec'?'몇 초 했는지 적어 주세요':'몇 회 했는지 적어 주세요');return false}p.s.done=true;p.s.awarded=true;const next=focusPosition(d,false),seconds=REST[p.e.t]||75;d.restFocus=next?{ei:p.ei,si:p.si}:null;d.restEndTs=next?Date.now()+seconds*1000:0;d.restDuration=next?seconds:0;if(!save()){p.e.sets[p.si]=before;d.restEndTs=end;d.restDuration=len;d.restFocus=restFocus;return false}restoreTimer();notifiedEnd=0;render();if(first)coinBurst();return true}
+function stepper(field,p,label,unit){return '<div class="focus-field"><label>'+label+'</label><div class="stepper"><button data-act="focusstep" data-v="'+field+'" data-dir="-1" aria-label="'+label+' 줄이기">−</button><div><input aria-label="'+label+' 직접 입력" inputmode="'+(field==='w'?'decimal':'numeric')+'" data-f="'+field+'" data-e="'+p.ei+'" data-s="'+p.si+'" value="'+esc(p.s[field])+'"><span>'+unit+'</span></div><button data-act="focusstep" data-v="'+field+'" data-dir="1" aria-label="'+label+' 늘리기">+</button></div></div>'}
+function vDraft(){
+ if(tableMode)return '<button class="btn primary" data-act="focusback">한 세트씩 보기</button>'+vDraftLegacy();
+ const d=D.draft,next=focusPosition(d,false),rest=!!d.restEndTs&&!!next,p=rest?focusPosition():next;
+ const dots='<div class="focus-top"><div class="progress-dots" aria-label="'+(p?(p.ei+1)+' / '+d.ex.length+'번째 종목':'모든 종목 완료')+'">'+d.ex.map((e,i)=>'<span class="'+(e.skipped?'skipped':e.sets.every(s=>s.done)?'done':p&&i===p.ei?'now':'')+'"></span>').join('')+'</div><button class="more-button" data-act="focusmore" aria-label="더보기">...</button></div>';
+ if(rest)return '<section class="focus-card">'+dots+'<h2>잠깐 쉬어요</h2><div class="roundhero">'+ring(0,1,140,7,'ROUND 1','쉬는 시간')+'<p id="restHint" class="rest-hint">시간이 끝나면 다음 세트를 보여드려요</p>'+(next.ei!==p.ei?'<p class="rest-hint">다음은 '+esc(next.e.n)+'예요</p>':'')+'<div class="rest-actions" id="restActions"><button class="btn ghost" data-act="t30">30초 더 쉬기</button><button class="btn primary" data-act="tclose">바로 다음 세트</button></div></div></section>';
+ if(!p)return '<section class="focus-card">'+dots+'<img class="finish-mascot" src="art/mascotgold.png" alt="운동 친구"><h2>오늘 운동을 다 했어요</h2><button class="btn primary" data-act="finish">운동 끝내기</button></section>';
+ fillFocus(p);return '<section class="focus-card">'+dots+(readyNotice?'<p class="ready-notice" role="status">다음 세트 시작해요</p>':'')+'<h2>'+esc(p.e.n)+'</h2><p class="set-count">'+(p.si+1)+'세트 / '+p.e.sets.length+'세트</p>'+motion(p.e.n,p.ei)+'<p class="tip">'+esc(suggest(exOf(p.e,d.day)).msg)+'</p>'+(p.e.t==='sec'?'<div class="bodyweight">맨몸</div>':stepper('w',p,p.e.t==='bw'?'추가 무게':'무게','kg'))+(p.e.t==='bw'?'<div class="bodyweight" id="focusBodyweight"'+(+p.s.w!==0?' hidden':'')+'>맨몸</div>':'')+(p.e.t==='bb'?'<div class="plate" id="pl'+p.ei+'">'+(plateTxt(p.s.w)||'무게를 쓰면 필요한 원판을 알려드려요')+'</div>':'')+stepper('r',p,p.e.t==='sec'?'시간':'횟수',p.e.t==='sec'?'초':'회')+'<button class="btn primary" data-act="focusdone">세트 완료</button></section>';
+}
+function focusMore(){const p=focusPosition(),rest=!!D.draft.restEndTs,ei=p?p.ei:Math.max(0,D.draft.ex.length-1),skipEi=rest?D.draft.ex.findIndex((e,i)=>i>ei&&!e.skipped&&e.sets.some(s=>!s.done)):ei;openSheet('<h2>더보기</h2>'+[['hard','힘들었어요'],['swap','종목 바꾸기'],['addset','세트 추가'],['delset','세트 빼기'],['focusskip',rest?'다음 종목 건너뛰기':'이 종목 건너뛰기'],['focustable','전체 목록 보기'],['finish','여기까지 기록하고 끝내기'],['cancel','운동 그만두기']].map(([act,text])=>'<button class="menu-item" data-act="'+act+'" data-e="'+(act==='focusskip'?skipEi:ei)+'"'+(act==='focusskip'&&skipEi<0?' disabled':'')+'>'+text+'</button>').join('')+'<button class="btn ghost" data-act="close">닫기</button>')}
+function showGuide(page=0){guidePage=page;const lines=['운동 시작 버튼을 누르면 시작해요','한 세트 하고 세트 완료를 눌러요','쉬는 시간이 끝나면 다음 세트예요'];openSheet('<div class="guide"><img src="art/mascotgold.png" alt="운동 친구"><p>'+(page+1)+' / 3</p><h2>'+lines[page]+'</h2><button class="btn primary" data-act="guidenext">'+(page===2?'알겠어요':'다음')+'</button></div>')}
+
 // ===== 이벤트 =====
 $('#nav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;D.tab=b.dataset.tab;save();render(true);scrollTo(0,0)});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act,v=b.dataset.v,ei=+b.dataset.e,si=+b.dataset.s;
  if(b.type==='checkbox')return;
  const d=D.draft;
  switch(a){
- case 'plan':D.plan=+v;save();render();break;
+ case 'todaysettings':settingsOpen=!settingsOpen;render();break;
+ case 'pickday':chosenDay=v;render();break;
+ case 'focusstep':if(changeFocus(v,+b.dataset.dir))render();break;
+ case 'focusdone':readyNotice=false;completeFocus();break;
+ case 'focusmore':focusMore();break;
+ case 'focusback':tableMode=false;activeExercise=null;render();break;
+ case 'focustable':tableMode=true;closeSheet();render();break;
+ case 'focusskip':{if(!d||!d.ex[ei])break;const prior=d.ex[ei].skipped;d.ex[ei].skipped=true;if(!save()){d.ex[ei].skipped=prior;break}closeSheet();stopTimer();render();break}
+ case 'guide':showGuide();break;
+ case 'guidenext':if(guidePage<2)showGuide(guidePage+1);else{D.seenGuide=true;if(save())closeSheet();else D.seenGuide=false}break;
+
+ case 'plan':chosenDay='';D.plan=+v;save();render();break;
  case 'start':{if(d&&!confirm('이어서 할 운동이 있어요. 지금 기록 대신 새로 시작할까요?'))return;const l=lastOfPlan();if(D.plan==3&&l&&dayDiff(today(),l.date)<2&&!confirm('전신 운동 뒤에는 하루 쉬면 좋아요. 오늘도 시작할까요?'))return;startDraft(v);break}
  case 'selectex':if(e.target.closest('button,input,label'))break;activeExercise=ei;render();break;
  case 'ck':{const st=d.ex[ei].sets[si],ex=exOf(d.ex[ei],d.day);if(!st.done&&String(st.r).trim()==='')st.r=String(ex.hi);if(!st.done&&!(Number(st.r)>0)){alert(ex.t==='sec'?'몇 초 했는지 적어 주세요':'몇 회 했는지 적어 주세요');return}const prior={...st};st.done=!st.done;const first=st.done&&!st.awarded;if(st.done)st.awarded=true;if(!save()){Object.assign(st,prior);return}activeExercise=null;render();if(st.done){startTimer(REST[ex.t]||75);if(first)coinBurst()};break}
- case 'hard':d.ex[ei].hard=!d.ex[ei].hard;save();render();break;
- case 'addset':{const s=d.ex[ei].sets,lst=s.at(-1);s.push({w:lst?lst.w:'',r:'',done:false,opt:false});save();render();break}
- case 'delset':{const s=d.ex[ei].sets;if(s.length>1&&!s.at(-1).done){s.pop();save();render()}else if(s.length>1&&confirm('완료한 마지막 세트를 지울까요?')){s.pop();save();render()}break}
+ case 'hard':closeSheet();d.ex[ei].hard=!d.ex[ei].hard;save();render();break;
+ case 'addset':{closeSheet();const s=d.ex[ei].sets,lst=s.at(-1);s.push({w:lst?lst.w:'',r:'',done:false,opt:false});save();render();break}
+ case 'delset':{closeSheet();const s=d.ex[ei].sets;if(s.length>1&&!s.at(-1).done){s.pop();save();render()}else if(s.length>1&&confirm('완료한 마지막 세트를 지울까요?')){s.pop();save();render()}break}
  case 'hidea2hs':D.hideA2HS=true;save();render();break;
  case 'info':infoSheet(ei);break;
  case 'rswap':swapSheet(null,v);break;
@@ -545,10 +660,10 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(
  case 'swap':swapSheet(ei);break;
  case 'swapto':doSwap(v);break;
  case 'swapcustom':doSwap($('#swapin').value);break;
- case 'finish':finish();break;
- case 'cancel':if(confirm('이번 운동을 기록 없이 그만둘까요?')){const kd=D.draft;D.draft=null;if(!save()){D.draft=kd;return}stopTimer();render()}break;
- case 't30':tEnd=Math.max(tEnd,Date.now())+30000;tLen=Math.max(tLen,Math.round((tEnd-Date.now())/1000));$('#island').classList.remove('end');tick();break;
- case 'tclose':stopTimer();break;
+ case 'finish':closeSheet();finish();break;
+ case 'cancel':if(confirm('이번 운동을 기록 없이 그만둘까요?')){const kd=D.draft;D.draft=null;if(!save()){D.draft=kd;return}stopTimer();closeSheet();render()}break;
+ case 't30':extendTimer();break;
+ case 'tclose':stopTimer();readyNotice=true;render();if(!tEnd){const next=document.querySelector('.ex.current .set:not(.done)')||document.querySelector('.ex .set:not(.done)');next?.scrollIntoView?.({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}break;
  case 'close':closeSheet();break;
  case 'gotolog':closeSheet();D.tab='log';save();render();scrollTo(0,0);break;
  case 'wtsave':{const x=parseFloat($('#wtin').value);if(!(x>30&&x<200)){alert('체중을 숫자로 넣어 주세요');return}const bk={...D.wt};D.wt[today()]=x;if(!save()){D.wt=bk;return}render();break}
@@ -579,7 +694,7 @@ document.addEventListener('change',e=>{const t=e.target,a=t.dataset.act;
 });
 document.addEventListener('input',e=>{const t=e.target;
  if(t.dataset.f&&D.draft){const ei=+t.dataset.e,st=D.draft.ex[ei].sets[+t.dataset.s];st[t.dataset.f]=t.value.replace(',','.').replace(t.dataset.f==='w'?/[^0-9.]/g:/[^0-9]/g,'');save();
-  if(t.dataset.f==='w'&&+t.dataset.s===0){const pl=$('#pl'+ei);if(pl)pl.textContent=plateTxt(st.w)||'무게를 쓰면 필요한 원판을 알려드려요'}return}
+  if(t.dataset.f==='w'){const pl=$('#pl'+ei);if(pl)pl.textContent=plateTxt(st.w)||'무게를 쓰면 필요한 원판을 알려드려요';const bw=$('#focusBodyweight');if(bw)bw.hidden=+st.w!==0}return}
  if(t.id==='eddate'&&SH&&SH.l){if(isD(t.value))SH.l.date=t.value;return}
  if(t.dataset.ef&&SH&&SH.l){const s=SH.l.ex[+t.dataset.e].sets[+t.dataset.s];const v=parseFloat(t.value.replace(',','.'));s[t.dataset.ef]=t.dataset.ef==='w'?(isNaN(v)?'':v):(isNaN(v)?0:Math.round(v))}
 });
@@ -592,6 +707,7 @@ async function exportData(){
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js');
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&e.target.closest('.th'))e.target.closest('.th').style.display='none'},true);
 render(true);
+if(!D.seenGuide)showGuide();
 </script>
 </body>
 </html>
