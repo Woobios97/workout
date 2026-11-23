@@ -1,4 +1,4 @@
-const C='workout-v9';
+const C='workout-v10';
 const A=['./','index.html','exdata.js','manifest.webmanifest','icon-180.png','icon-512.png','art/mascot.png','art/mascot2.png','art/cloud.png','art/flame.png','art/trophy.png','art/coin.png','art/palm.png','art/bg.jpg','art/sun.png','art/mascotgold.png','art/golddb.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(A)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('workout-')&&k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
